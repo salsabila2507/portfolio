@@ -176,6 +176,15 @@
       50% { box-shadow: 5px 5px 0 #000, 0 0 25px rgba(255,107,0,0.6); }
     }
 
+    .comic-zigzag {
+      background: linear-gradient(135deg, #E31E24 25%, transparent 25%) -50px 0,
+                  linear-gradient(225deg, #E31E24 25%, transparent 25%) -50px 0,
+                  linear-gradient(315deg, #E31E24 25%, transparent 25%),
+                  linear-gradient(45deg, #E31E24 25%, transparent 25%);
+      background-size: 20px 20px;
+      background-color: #FFD700;
+    }
+
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
 </head>
@@ -206,6 +215,7 @@
     </div>
   </nav>
 
+  <!-- HERO -->
   <section class="min-h-screen pt-24 pb-16 relative speed-lines overflow-hidden">
     <div class="absolute inset-0 pointer-events-none">
       <div class="absolute top-0 left-0 w-full h-64 fire-gradient opacity-20 blur-3xl"></div>
@@ -228,12 +238,12 @@
               </h1>
               <div class="speech-bubble max-w-lg mt-8">
                 <p class="text-sm md:text-base font-bold leading-relaxed">
-                  "Bridging users and technology in Web3 ecosystems with <span class="text-[#E31E24] font-extrabold">4+ years</span> of experience building healthy, responsive communities."
+                  Gue orang yang bikin komunitas Web3 jalan. Bukan cuma ngurus chat, tapi beneran bikin orang engaged. 4+ tahun di dunia crypto, dari admin Telegram sampe manage 300+ ambassador global.
                 </p>
               </div>
               <div class="flex flex-wrap gap-3 mt-8">
-                <a href="mailto:mizul240704@gmail.com" class="bg-[#E31E24] text-white px-6 py-3 comic-border comic-shadow-fire font-extrabold text-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flame-anim">GET IN TOUCH</a>
-                <a href="#experience" class="bg-[#0078CC] text-white px-6 py-3 comic-border comic-shadow font-extrabold text-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">VIEW EXPERIENCE</a>
+                <a href="mailto:mizul240704@gmail.com" class="bg-[#E31E24] text-white px-6 py-3 comic-border comic-shadow-fire font-extrabold text-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flame-anim">HUBUNGI GUE</a>
+                <a href="#experience" class="bg-[#0078CC] text-white px-6 py-3 comic-border comic-shadow font-extrabold text-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">LIHAT PENGALAMAN</a>
               </div>
               <div class="flex gap-4 mt-6">
                 <a href="https://x.com/zulmeegp" target="_blank" rel="noopener noreferrer" class="w-10 h-10 comic-border comic-shadow bg-[#E31E24] flex items-center justify-center text-white hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all" aria-label="X">
@@ -242,7 +252,7 @@
                 <a href="https://www.linkedin.com/in/mizul-lll-0253a9348/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 comic-border comic-shadow bg-[#0078CC] flex items-center justify-center text-white hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all" aria-label="LinkedIn">
                   <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 </a>
-                <a href="https://github.com/mizul24" target="_blank" rel="noopener noreferrer" class="w-10 h-10 comic-border comic-shadow bg-[#FFD700] flex items-center justify-center text-[#1A1A2E] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all" aria-label="GitHub">
+                <a href="https://github.com/salsabila2507" target="_blank" rel="noopener noreferrer" class="w-10 h-10 comic-border comic-shadow bg-[#FFD700] flex items-center justify-center text-[#1A1A2E] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all" aria-label="GitHub">
                   <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
                 </a>
                 <a href="mailto:mizul240704@gmail.com" class="w-10 h-10 comic-border comic-shadow bg-[#FF6B00] flex items-center justify-center text-white hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flame-anim" aria-label="Email">
@@ -258,21 +268,21 @@
             <div class="halftone-red absolute inset-0 pointer-events-none"></div>
             <div class="relative z-10 p-6 text-center">
               <div class="action-word text-6xl md:text-7xl text-[#FFD700] mb-2 flame-anim">4+</div>
-              <div class="font-extrabold text-sm text-[#FF6B00]">YEARS</div>
+              <div class="font-extrabold text-sm text-[#FF6B00]">TAHUN</div>
             </div>
           </div>
           <div class="panel fire-border comic-shadow-fire relative overflow-hidden" style="animation: float 3s ease-in-out infinite 0.5s, burn 3s ease-in-out infinite 0.5s;">
             <div class="halftone-blue absolute inset-0 pointer-events-none"></div>
             <div class="relative z-10 p-6 text-center">
               <div class="action-word text-5xl md:text-6xl text-[#0078CC] mb-2">63K+</div>
-              <div class="font-extrabold text-sm text-[#0078CC]">MEMBERS</div>
+              <div class="font-extrabold text-sm text-[#0078CC]">MEMBER</div>
             </div>
           </div>
           <div class="panel fire-border comic-shadow-fire relative overflow-hidden" style="animation: float 3s ease-in-out infinite 1s, burn 3s ease-in-out infinite 1s;">
             <div class="halftone-yellow absolute inset-0 pointer-events-none"></div>
             <div class="relative z-10 p-6 text-center">
               <div class="action-word text-5xl md:text-6xl text-[#E31E24] mb-2 flame-anim">300+</div>
-              <div class="font-extrabold text-sm text-[#E31E24]">AMBASSADORS</div>
+              <div class="font-extrabold text-sm text-[#E31E24]">AMBASSADOR</div>
             </div>
           </div>
         </div>
@@ -281,25 +291,26 @@
     </div>
   </section>
 
+  <!-- ABOUT -->
   <section id="about" class="py-16 md:py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="panel fire-border comic-shadow-fire relative overflow-hidden" style="animation: burn 4s ease-in-out infinite;">
         <div class="halftone absolute inset-0 pointer-events-none"></div>
         <div class="relative z-10 p-6 md:p-10">
           <div class="inline-block bg-[#0078CC] comic-border comic-shadow px-4 py-1 mb-6 rotate-1">
-            <span class="font-comic text-sm tracking-wider text-white">ABOUT</span>
+            <span class="font-comic text-sm tracking-wider text-white">TENTANG GUE</span>
           </div>
           <h2 class="font-comic text-3xl md:text-5xl mb-6 tracking-wide text-white">
-            WHERE COMMUNITY MEETS <span class="fire-text">WEB3</span> TECHNOLOGY
+            KOMUNITAS BUKAN CUMA <span class="fire-text">CHAT</span>, TAPI BENERAN HIDUP
           </h2>
           <div class="grid md:grid-cols-2 gap-8">
             <div class="space-y-4 text-sm md:text-base font-medium leading-relaxed text-white/80">
-              <p>I help <span class="text-white font-extrabold">Web3 communities grow, stay engaged, and feel connected</span>. With 4+ years of experience in blockchain and crypto, I've worked across community management, customer support, ecosystem engagement, and technical operations.</p>
-              <p>Exposure to <span class="text-white font-extrabold">blockchain infrastructure, DeFi, DePIN, AI, CeFi, NFTs, GameFi, prediction markets</span>, and emerging technologies — plus deep understanding of nodes, validators, testnets, and decentralized network operations.</p>
-              <p>My work revolves around creating positive community experiences — managing Telegram and Discord, supporting users, organizing events, and bridging the gap between users and projects.</p>
+              <p>Gue mulai dari jadi admin Telegram biasa, sekarang manage komunitas 63K+ member di Discord & Telegram. Dari nol sampe sekarang, gue ngerti gimana caranya bikin komunitas itu beneran aktif, bukan cuma numbers doang.</p>
+              <p>Main di semua spektrum Web3: DeFi, DePIN, AI, CeFi, NFT, GameFi, prediction market. Jalanin node, testnet, validator. Yang ribet-ribet malah gue suka.</p>
+              <p>Bukan cuma ngurus chat. Gue bikin program ambassador, training SOP, bikin konten, sampe koordinatin event 50-100 orang. Intinya? Gue bikin Web3 itu accessible buat semua orang.</p>
             </div>
             <div class="speech-bubble-dark">
-              <p class="text-sm font-bold leading-relaxed">"I'm passionate about making complex Web3 concepts accessible to everyone. Whether it's managing 63K+ community members or coordinating 300+ global ambassadors — I bridge the gap between technology and people."</p>
+              <p class="text-sm font-bold leading-relaxed">"Banyak yang bilang community manager itu cuma admin chat. Gue buktiin itu salah. Manage 300+ ambassador globally, build system dari nol, bikin retention naik. That's what I do."</p>
             </div>
           </div>
         </div>
@@ -307,13 +318,14 @@
     </div>
   </section>
 
+  <!-- SKILLS -->
   <section id="skills" class="py-16 md:py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="inline-block bg-[#E31E24] comic-border comic-shadow px-4 py-1 mb-6 -rotate-1">
-        <span class="font-comic text-sm tracking-wider text-white">EXPERTISE</span>
+        <span class="font-comic text-sm tracking-wider text-white">SKILL GUE</span>
       </div>
       <h2 class="font-comic text-3xl md:text-5xl mb-8 tracking-wide text-white">
-        CORE SKILLS & <span class="fire-text">FOCUS</span>
+        YANG GUE <span class="fire-text">BISA</span> LAKUIN
       </h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
@@ -325,7 +337,7 @@
             </div>
             <div class="font-comic text-xs text-[#FF6B00] mb-1 tracking-wider">FIRE</div>
             <h3 class="font-extrabold text-sm text-white mb-1">Community Management</h3>
-            <p class="text-xs font-medium text-white/60">Building and maintaining interactive, healthy communities on Telegram & Discord.</p>
+            <p class="text-xs font-medium text-white/60">Bikin komunitas hidup di Telegram & Discord. Bukan cuma moderasi, tapi beneran engagement.</p>
           </div>
         </div>
 
@@ -336,8 +348,8 @@
               <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="square" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
             </div>
             <div class="font-comic text-xs text-[#0078CC] mb-1 tracking-wider">WATER</div>
-            <h3 class="font-extrabold text-sm text-white mb-1">Ambassador Programs</h3>
-            <p class="text-xs font-medium text-white/60">Managing, training, and evaluating global ambassadors to amplify product reach.</p>
+            <h3 class="font-extrabold text-sm text-white mb-1">Ambassador Program</h3>
+            <p class="text-xs font-medium text-white/60">Manage, training, sampe evaluasi ambassador global. Build sistem dari nol.</p>
           </div>
         </div>
 
@@ -349,7 +361,7 @@
             </div>
             <div class="font-comic text-xs text-[#FFD700] mb-1 tracking-wider">EARTH</div>
             <h3 class="font-extrabold text-sm text-white mb-1">Crypto & Node Tech</h3>
-            <p class="text-xs font-medium text-white/60">Proficiency in Web3 ecosystems, testnets, and validator node operations.</p>
+            <p class="text-xs font-medium text-white/60">Testnet, validator, node operations. Yang teknikal juga gue handle.</p>
           </div>
         </div>
 
@@ -360,8 +372,8 @@
               <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="square" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
             </div>
             <div class="font-comic text-xs text-[#FF6B00] mb-1 tracking-wider">AIR</div>
-            <h3 class="font-extrabold text-sm text-white mb-1">Web3 Growth</h3>
-            <p class="text-xs font-medium text-white/60">Campaigns, events, and engagement strategies to boost project awareness.</p>
+            <h3 class="font-extrabold text-sm text-white mb-1">Growth & Campaign</h3>
+            <p class="text-xs font-medium text-white/60">Event, campaign, engagement strategy. Bikin project dikenal orang.</p>
           </div>
         </div>
 
@@ -373,7 +385,7 @@
             </div>
             <div class="font-comic text-xs text-[#FF6B00] mb-1 tracking-wider">FIRE</div>
             <h3 class="font-extrabold text-sm text-white mb-1">Content Creation</h3>
-            <p class="text-xs font-medium text-white/60">Technical articles, educational threads, and promotional content.</p>
+            <p class="text-xs font-medium text-white/60">Thread, meme, infografis, article. Bikin konten yang orang mau baca.</p>
           </div>
         </div>
 
@@ -385,7 +397,7 @@
             </div>
             <div class="font-comic text-xs text-[#0078CC] mb-1 tracking-wider">WATER</div>
             <h3 class="font-extrabold text-sm text-white mb-1">Video Editing</h3>
-            <p class="text-xs font-medium text-white/60">Review videos and tutorials for Web3 applications and platforms.</p>
+            <p class="text-xs font-medium text-white/60">Tutorial, review video, konten visual buat Web3 project.</p>
           </div>
         </div>
 
@@ -397,7 +409,7 @@
             </div>
             <div class="font-comic text-xs text-[#FFD700] mb-1 tracking-wider">EARTH</div>
             <h3 class="font-extrabold text-sm text-white mb-1">Bilingual Comms</h3>
-            <p class="text-xs font-medium text-white/60">Fluent in Indonesian & English — bridging global audiences.</p>
+            <p class="text-xs font-medium text-white/60">Indo & English. Jembatin audience global.</p>
           </div>
         </div>
 
@@ -409,7 +421,7 @@
             </div>
             <div class="font-comic text-xs text-[#FF6B00] mb-1 tracking-wider">AIR</div>
             <h3 class="font-extrabold text-sm text-white mb-1">Networking</h3>
-            <p class="text-xs font-medium text-white/60">Strategic relationships with founders, KOLs, and ecosystem partners.</p>
+            <p class="text-xs font-medium text-white/60">Koneksi sama founder, KOL, partner ekosistem. Relasi itu penting.</p>
           </div>
         </div>
 
@@ -417,13 +429,14 @@
     </div>
   </section>
 
+  <!-- EXPERIENCE -->
   <section id="experience" class="py-16 md:py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="inline-block bg-[#FFD700] comic-border comic-shadow px-4 py-1 mb-6 rotate-1">
-        <span class="font-comic text-sm tracking-wider text-[#1A1A2E]">FOOTPRINT</span>
+        <span class="font-comic text-sm tracking-wider text-[#1A1A2E]">PENGALAMAN</span>
       </div>
       <h2 class="font-comic text-3xl md:text-5xl mb-8 tracking-wide text-white">
-        WEB3 EXPERIENCE & <span class="fire-text">IMPACT</span>
+        YANG PERNAH GUE <span class="fire-text">LAKUIN</span>
       </h2>
       <div class="grid md:grid-cols-2 gap-4">
 
@@ -439,9 +452,9 @@
               </div>
             </div>
             <ul class="space-y-1">
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Managed, mentored, and educated 300+ global Ambassadors</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Developed onboarding materials, SOPs, and training programs</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Improved Ambassador retention through reward programs</li>
+              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Manage 300+ ambassador global, bikin SOP, training program</li>
+              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Retention naik gara-gara reward system yang gue rancang</li>
+              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Onboarding materi dari nol sampe jalan</li>
             </ul>
           </div>
         </div>
@@ -458,9 +471,9 @@
               </div>
             </div>
             <ul class="space-y-1">
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>Managed a community of 63,000+ members across Discord and Telegram</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>Provided support and maintained a safe, spam-free environment</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>Organized community events with 50-100 participants</li>
+              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>63K+ member di Discord & Telegram, gue yang jaga</li>
+              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>Support user, jaga keamanan, spam-free environment</li>
+              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>Event komunitas 50-100 participant</li>
             </ul>
           </div>
         </div>
@@ -477,9 +490,9 @@
               </div>
             </div>
             <ul class="space-y-1">
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Creating creative content: threads, memes, and infographics</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Actively engaging in community communications via Discord & Telegram</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Participated in weekly meetings and contributed to ecosystem growth</li>
+              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Bikin konten kreatif: thread, meme, infografis</li>
+              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Engage aktif di Discord & Telegram</li>
+              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Weekly meeting, kontribusi buat ekosistem</li>
             </ul>
           </div>
         </div>
@@ -496,9 +509,9 @@
               </div>
             </div>
             <ul class="space-y-1">
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Contributed to ecosystem activities: engagement, growth, community interaction</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Supported awareness and adoption through active participation</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Running node in the Vana ecosystem (Volara)</li>
+              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Ecosystem engagement, growth, community interaction</li>
+              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Support awareness & adoption lewat partisipasi aktif</li>
+              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Jalanin node di Vana ecosystem (Volara)</li>
             </ul>
           </div>
         </div>
@@ -506,7 +519,7 @@
       </div>
       <details class="mt-4 group">
         <summary class="flex items-center gap-2 text-xs font-bold text-[#FF6B00] cursor-pointer hover:text-[#FFD700] transition-colors">
-          <span>Show 4 more roles</span>
+          <span>Lihat 4 role lagi</span>
           <svg class="w-3.5 h-3.5 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="square" d="M19 9l-7 7-7-7"/></svg>
         </summary>
         <div class="grid md:grid-cols-2 gap-4 mt-4">
@@ -522,8 +535,8 @@
                 </div>
               </div>
               <ul class="space-y-1">
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Created daily promotional content across social media</li>
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Educated traders about AI trading features across 25 blockchain networks</li>
+                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Bikin konten promosi harian di social media</li>
+                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Edukasi trader soal AI trading di 25 blockchain</li>
               </ul>
             </div>
           </div>
@@ -539,8 +552,8 @@
                 </div>
               </div>
               <ul class="space-y-1">
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>Managed activities within the Bulb application</li>
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>Created blogs, Twitter threads, articles, and video reviews</li>
+                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>Manage aktivitas di Bulb application</li>
+                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>Bikin blog, Twitter thread, article, video review</li>
               </ul>
             </div>
           </div>
@@ -556,8 +569,8 @@
                 </div>
               </div>
               <ul class="space-y-1">
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Built meaningful connections and participated in discussions</li>
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Created high-quality content: threads, videos, articles, and tutorials</li>
+                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Bikin koneksi & aktif di diskusi</li>
+                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Konten berkualitas: thread, video, article, tutorial</li>
               </ul>
             </div>
           </div>
@@ -573,8 +586,8 @@
                 </div>
               </div>
               <ul class="space-y-1">
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Created engaging content: Twitter threads and articles</li>
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Participated in community activities and campaigns</li>
+                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Bikin Twitter thread & article yang engaging</li>
+                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Ikut campaign & aktivitas komunitas</li>
               </ul>
             </div>
           </div>
@@ -583,23 +596,23 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact" class="py-16 md:py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="panel fire-border comic-shadow-fire relative overflow-hidden" style="animation: burn 3s ease-in-out infinite;">
         <div class="halftone-fire absolute inset-0 opacity-10 pointer-events-none"></div>
         <div class="relative z-10 p-8 md:p-12 text-center">
           <div class="inline-block bg-[#FF6B00] comic-border comic-shadow px-4 py-1 mb-6 -rotate-1">
-            <span class="font-comic text-sm tracking-wider text-white">COLLABORATE</span>
+            <span class="font-comic text-sm tracking-wider text-white">MARI KOLABORASI</span>
           </div>
           <h2 class="font-comic text-4xl md:text-6xl mb-4 tracking-wide text-white">
-            LET'S BUILD SOMETHING<br>
-            <span class="fire-text">TOGETHER</span>
+            YUK BIKIN SESUATU<br>
+            <span class="fire-text">BERSAMA</span>
           </h2>
           <p class="text-sm md:text-base font-medium text-white/50 mb-8 max-w-md mx-auto">
-            Ready to scale your Web3 community and project ecosystem? Let's make it happen.
-          </p>
+            Mau scale komunitas Web3 kamu? Gue siap bantu. Let's talk.</p>
           <a href="mailto:mizul240704@gmail.com" class="inline-flex items-center gap-2 bg-[#E31E24] text-white px-8 py-4 comic-border comic-shadow-fire font-extrabold text-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flame-anim">
-            START A CONVERSATION
+            NGOMONG AJA
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="square" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
           </a>
         </div>
@@ -619,7 +632,7 @@
           <span class="w-3 h-3 bg-[#FF6B00] comic-border"></span>
         </div>
       </div>
-      <span class="text-xs font-bold text-white/30">&copy; 2026 Muhamad Hilmi Zulkarnaen. All Rights Reserved.</span>
+      <span class="text-xs font-bold text-white/30">&copy; 2026 Muhamad Hilmi Zulkarnaen.</span>
     </div>
   </footer>
 </body>
