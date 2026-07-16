@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Myzulll | Web3 Community Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Orbitron', 'monospace'],
+            body: ['Exo 2', 'sans-serif'],
+          },
+          colors: {
+            surface: { DEFAULT: '#0A0A0B', light: '#121214', card: '#18181B', border: '#1F1F23' },
+            accent: { DEFAULT: '#2563EB', 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563EB', 700: '#1d4ed8' },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Exo 2', sans-serif; background: #0A0A0B; color: #FAFAFA; }
+    .heading { font-family: 'Orbitron', monospace; }
+    .section-label { font-family: 'Orbitron', monospace; font-size: 0.7rem; letter-spacing: 0.25em; color: #60a5fa; font-weight: 600; }
+    .hero-title { font-family: 'Orbitron', monospace; font-size: clamp(2.8rem, 10vw, 8rem); font-weight: 900; line-height: 0.85; letter-spacing: -0.06em; }
+    .gradient-text { background: linear-gradient(135deg, #FAFAFA 0%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-blue { background: linear-gradient(135deg, #2563EB, #60a5fa); }
+    .card-hover { transition: all 0.25s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(37, 99, 235, 0.1); }
+    .glow-line { height: 1px; background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.3), transparent); }
+    @media (prefers-reduced-motion: reduce) { .card-hover:hover { transform: none; } }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0A0A0B; }
+    ::-webkit-scrollbar-thumb { background: #1F1F23; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3F3F46; }
+  </style>
+</head>
+<body>
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0B]/80 backdrop-blur-xl border-b border-[#1F1F23]">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="heading text-xs font-bold tracking-[0.2em] text-white/90 hover:text-[#60a5fa] transition-colors">MYZULLL</a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-white/50">
+        <a href="#about" class="hover:text-white transition-colors">About</a>
+        <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+        <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+        <a href="#contact" class="bg-[#2563EB] text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-[#1d4ed8] transition-all tracking-wide">Contact</a>
+      </div>
+      <button class="md:hidden text-white/70" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Menu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-[#1F1F23] bg-[#0A0A0B]/95 backdrop-blur-xl">
+      <div class="px-6 py-4 flex flex-col gap-4 text-sm text-white/50">
+        <a href="#about" class="hover:text-white transition-colors">About</a>
+        <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+        <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+        <a href="#contact" class="text-[#60a5fa] font-semibold">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="min-h-screen flex items-center pt-24 pb-16 md:pb-24 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/4 -left-32 w-96 h-96 bg-[#2563EB]/5 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#60a5fa]/5 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 w-full relative z-10">
+      <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div>
+          <div class="section-label mb-6">WEB3 COMMUNITY BUILDER</div>
+          <h1 class="hero-title mb-6">
+            Muhamad<br>
+            Hilmi<br>
+            <span class="gradient-text">Zulkarnaen</span>
+          </h1>
+          <p class="text-base md:text-lg text-white/50 leading-relaxed max-w-lg mb-8">
+            <span class="text-white/80 font-semibold">4+ years</span> bridging users and technology in Web3 ecosystems. I build healthy, responsive communities and translate complex tech into clear value.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="mailto:mizul240704@gmail.com" class="gradient-blue text-white px-6 py-3 rounded-full font-semibold text-sm hover:opacity-90 transition-all card-hover shadow-lg shadow-[#2563EB]/20">Get in Touch</a>
+            <a href="#experience" class="border border-[#1F1F23] text-white/70 px-6 py-3 rounded-full text-sm font-medium hover:border-[#2563EB] hover:text-[#60a5fa] transition-all">View Experience</a>
+          </div>
+          <div class="flex gap-5 mt-8">
+            <a href="https://x.com/zulmeegp" target="_blank" rel="noopener noreferrer" class="text-white/30 hover:text-[#60a5fa] transition-colors" aria-label="X">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/mizul-lll-0253a9348/" target="_blank" rel="noopener noreferrer" class="text-white/30 hover:text-[#60a5fa] transition-colors" aria-label="LinkedIn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://github.com/mizul24" target="_blank" rel="noopener noreferrer" class="text-white/30 hover:text-[#60a5fa] transition-colors" aria-label="GitHub">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="mailto:mizul240704@gmail.com" class="text-white/30 hover:text-[#60a5fa] transition-colors" aria-label="Email">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="flex justify-center md:justify-end">
+          <div class="relative">
+            <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-[#2563EB] via-[#60a5fa] to-[#2563EB] p-[2px] shadow-2xl shadow-[#2563EB]/20">
+              <div class="w-full h-full rounded-full bg-[#0A0A0B] flex items-center justify-center">
+                <span class="heading text-7xl md:text-8xl font-black gradient-text">M</span>
+              </div>
+            </div>
+            <div class="absolute -bottom-3 -right-3 bg-[#121214] border border-[#1F1F23] rounded-full px-5 py-2 text-xs font-medium text-white/70 heading tracking-wider shadow-lg">
+              4+ YEARS
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-line max-w-6xl mx-auto"></div>
+
+  <section id="about" class="py-24 md:py-32">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="section-label mb-4">ABOUT</div>
+      <h2 class="heading text-3xl md:text-5xl font-bold text-white mb-3">
+        Where Community Meets <span class="gradient-text">Web3 Technology</span>
+      </h2>
+      <p class="text-white/40 text-sm mb-12 max-w-xl">Building bridges between users and decentralized ecosystems.</p>
+      <div class="grid md:grid-cols-5 gap-8 md:gap-12">
+        <div class="md:col-span-3 space-y-4 text-white/60 text-base leading-relaxed">
+          <p>I help <span class="text-white font-medium">Web3 communities grow, stay engaged, and feel connected</span>. With 4+ years of experience in blockchain and crypto, I've worked across community management, customer support, ecosystem engagement, and technical operations.</p>
+          <p>Throughout my journey, I've gained hands-on exposure to <span class="text-white font-medium">blockchain infrastructure, DeFi, DePIN, AI, CeFi, NFTs, GameFi, prediction markets</span>, and emerging technologies such as robotics — plus deep understanding of nodes, validators, testnets, and decentralized network operations.</p>
+          <p>My work revolves around creating positive community experiences — managing Telegram and Discord channels, supporting users, organizing events, and bridging the gap between users and projects.</p>
+        </div>
+        <div class="md:col-span-2 grid grid-cols-2 gap-3 content-start">
+          <div class="bg-[#121214] border border-[#1F1F23] rounded-2xl p-6 card-hover">
+            <div class="heading text-4xl md:text-5xl font-black gradient-text mb-1">4+</div>
+            <div class="text-sm text-white/40 font-medium">Years in Web3</div>
+          </div>
+          <div class="bg-[#121214] border border-[#1F1F23] rounded-2xl p-6 card-hover">
+            <div class="heading text-4xl md:text-5xl font-black gradient-text mb-1">63K+</div>
+            <div class="text-sm text-white/40 font-medium">Members Managed</div>
+          </div>
+          <div class="bg-[#121214] border border-[#1F1F23] rounded-2xl p-6 card-hover">
+            <div class="heading text-4xl md:text-5xl font-black gradient-text mb-1">300+</div>
+            <div class="text-sm text-white/40 font-medium">Ambassadors Led</div>
+          </div>
+          <div class="bg-[#121214] border border-[#1F1F23] rounded-2xl p-6 card-hover">
+            <div class="heading text-4xl md:text-5xl font-black gradient-text mb-1">10+</div>
+            <div class="text-sm text-white/40 font-medium">Projects Served</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="py-24 md:py-32 bg-[#121214]">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="section-label mb-4">EXPERTISE</div>
+      <h2 class="heading text-3xl md:text-5xl font-bold text-white mb-3">
+        Core Skills & <span class="gradient-text">Focus</span>
+      </h2>
+      <p class="text-white/40 text-sm mb-12 max-w-xl">A versatile skill set built across community building, content creation, and Web3 operations.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-[#0A0A0B] border border-[#1F1F23] rounded-2xl p-6 card-hover group">
+          <div class="w-10 h-10 rounded-xl bg-[#2563EB]/10 flex items-center justify-center mb-4 group-hover:bg-[#2563EB]/20 transition-colors">
+            <svg class="w-5 h-5 text-[#60a5fa]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+          </div>
+          <h3 class="heading text-xs font-bold text-white mb-2 tracking-wider">Community Management</h3>
+          <p class="text-xs text-white/40 leading-relaxed">Building and maintaining interactive, healthy communities on Telegram & Discord.</p>
+        </div>
+        <div class="bg-[#0A0A0B] border border-[#1F1F23] rounded-2xl p-6 card-hover group">
+          <div class="w-10 h-10 rounded-xl bg-[#2563EB]/10 flex items-center justify-center mb-4 group-hover:bg-[#2563EB]/20 transition-colors">
+            <svg class="w-5 h-5 text-[#60a5fa]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+          </div>
+          <h3 class="heading text-xs font-bold text-white mb-2 tracking-wider">Ambassador Programs</h3>
+          <p class="text-xs text-white/40 leading-relaxed">Managing, training, and evaluating global ambassadors to amplify product reach.</p>
+        </div>
+        <div class="bg-[#0A0A0B] border border-[#1F1F23] rounded-2xl p-6 card-hover group">
+          <div class="w-10 h-10 rounded-xl bg-[#2563EB]/10 flex items-center justify-center mb-4 group-hover:bg-[#2563EB]/20 transition-colors">
+            <svg class="w-5 h-5 text-[#60a5fa]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+          </div>
+          <h3 class="heading text-xs font-bold text-white mb-2 tracking-wider">Crypto & Node Tech</h3>
+          <p class="text-xs text-white/40 leading-relaxed">Proficiency in Web3 ecosystems, testnets, and validator node operations.</p>
+        </div>
+        <div class="bg-[#0A0A0B] border border-[#1F1F23] rounded-2xl p-6 card-hover group">
+          <div class="w-10 h-10 rounded-xl bg-[#2563EB]/10 flex items-center justify-center mb-4 group-hover:bg-[#2563EB]/20 transition-colors">
+            <svg class="w-5 h-5 text-[#60a5fa]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+          </div>
+          <h3 class="heading text-xs font-bold text-white mb-2 tracking-wider">Web3 Growth</h3>
+          <p class="text-xs text-white/40 leading-relaxed">Campaigns, events, and engagement strategies to boost project awareness.</p>
+        </div>
+        <div class="bg-[#0A0A0B] border border-[#1F1F23] rounded-2xl p-6 card-hover group">
+          <div class="w-10 h-10 rounded-xl bg-[#2563EB]/10 flex items-center justify-center mb-4 group-hover:bg-[#2563EB]/20 transition-colors">
+            <svg class="w-5 h-5 text-[#60a5fa]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>
+          </div>
+          <h3 class="heading text-xs font-bold text-white mb-2 tracking-wider">Content Creation</h3>
+          <p class="text-xs text-white/40 leading-relaxed">Technical articles, educational threads, and promotional content.</p>
+        </div>
+        <div class="bg-[#0A0A0B] border border-[#1F1F23] rounded-2xl p-6 card-hover group">
+          <div class="w-10 h-10 rounded-xl bg-[#2563EB]/10 flex items-center justify-center mb-4 group-hover:bg-[#2563EB]/20 transition-colors">
+            <svg class="w-5 h-5 text-[#60a5fa]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"/></svg>
+          </div>
+          <h3 class="heading text-xs font-bold text-white mb-2 tracking-wider">Video Editing</h3>
+          <p class="text-xs text-white/40 leading-relaxed">Review videos and tutorials for Web3 applications and platforms.</p>
+        </div>
+        <div class="bg-[#0A0A0B] border border-[#1F1F23] rounded-2xl p-6 card-hover group">
+          <div class="w-10 h-10 rounded-xl bg-[#2563EB]/10 flex items-center justify-center mb-4 group-hover:bg-[#2563EB]/20 transition-colors">
+            <svg class="w-5 h-5 text-[#60a5fa]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501A12.435 12.435 0 0012 18.24c.634.538 1.378.964 2.197 1.251M21.75 13.5a.75.75 0 01-.75.75H20.25a.75.75 0 01-.75-.75v-4.5a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v4.5zm-15 0a.75.75 0 01-.75.75H4.5a.75.75 0 01-.75-.75v-4.5a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v4.5z"/></svg>
+          </div>
+          <h3 class="heading text-xs font-bold text-white mb-2 tracking-wider">Bilingual Comms</h3>
+          <p class="text-xs text-white/40 leading-relaxed">Fluent in Indonesian & English — bridging global audiences.</p>
+        </div>
+        <div class="bg-[#0A0A0B] border border-[#1F1F23] rounded-2xl p-6 card-hover group">
+          <div class="w-10 h-10 rounded-xl bg-[#2563EB]/10 flex items-center justify-center mb-4 group-hover:bg-[#2563EB]/20 transition-colors">
+            <svg class="w-5 h-5 text-[#60a5fa]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+          </div>
+          <h3 class="heading text-xs font-bold text-white mb-2 tracking-wider">Networking</h3>
+          <p class="text-xs text-white/40 leading-relaxed">Strategic relationships with founders, KOLs, and ecosystem partners.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="py-24 md:py-32">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="section-label mb-4">FOOTPRINT</div>
+      <h2 class="heading text-3xl md:text-5xl font-bold text-white mb-3">
+        Web3 Experience & <span class="gradient-text">Impact</span>
+      </h2>
+      <p class="text-white/40 text-sm mb-12 max-w-xl">A track record built on trust, results, and community across the decentralized ecosystem.</p>
+      <div class="space-y-4">
+        <div class="bg-[#121214] border border-[#1F1F23] rounded-2xl p-6 md:p-8 card-hover group">
+          <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#2563EB]/20 to-[#60a5fa]/10 flex items-center justify-center shrink-0 border border-[#2563EB]/20">
+              <span class="heading text-base font-bold text-[#60a5fa]">AW</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2">
+                <h3 class="heading text-sm font-bold text-white">Community Manager</h3>
+                <span class="text-[10px] font-medium text-[#60a5fa] bg-[#2563EB]/10 px-3 py-1 rounded-full tracking-wider">Antarctic Wallet</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Managed, mentored, and educated 300+ global Ambassadors</li>
+                <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Developed onboarding materials, SOPs, and training programs</li>
+                <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Improved Ambassador retention through reward programs</li>
+                <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Served as primary liaison between internal teams and Ambassadors</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bg-[#121214] border border-[#1F1F23] rounded-2xl p-6 md:p-8 card-hover group">
+          <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#2563EB]/20 to-[#60a5fa]/10 flex items-center justify-center shrink-0 border border-[#2563EB]/20">
+              <span class="heading text-base font-bold text-[#60a5fa]">DE</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2">
+                <h3 class="heading text-sm font-bold text-white">Moderator</h3>
+                <span class="text-[10px] font-medium text-[#60a5fa] bg-[#2563EB]/10 px-3 py-1 rounded-full tracking-wider">Dubhe Engine</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Managed a community of 63,000+ members across Discord and Telegram</li>
+                <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Provided support and maintained a safe, spam-free environment</li>
+                <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Organized community events with 50&ndash;100 participants</li>
+                <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Collected user feedback during testnet phases</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bg-[#121214] border border-[#1F1F23] rounded-2xl p-6 md:p-8 card-hover group">
+          <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#2563EB]/20 to-[#60a5fa]/10 flex items-center justify-center shrink-0 border border-[#2563EB]/20">
+              <span class="heading text-base font-bold text-[#60a5fa]">S</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2">
+                <h3 class="heading text-sm font-bold text-white">Inner Circle</h3>
+                <span class="text-[10px] font-medium text-[#60a5fa] bg-[#2563EB]/10 px-3 py-1 rounded-full tracking-wider">Syndicate</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Creating creative content: threads, memes, and infographics</li>
+                <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Actively engaging in community communications via Discord & Telegram</li>
+                <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Participated in weekly meetings and contributed to ecosystem growth</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bg-[#121214] border border-[#1F1F23] rounded-2xl p-6 md:p-8 card-hover group">
+          <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#2563EB]/20 to-[#60a5fa]/10 flex items-center justify-center shrink-0 border border-[#2563EB]/20">
+              <span class="heading text-base font-bold text-[#60a5fa]">KF</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2">
+                <h3 class="heading text-sm font-bold text-white">Web3 Contributor</h3>
+                <span class="text-[10px] font-medium text-[#60a5fa] bg-[#2563EB]/10 px-3 py-1 rounded-full tracking-wider">Kaia Chain &amp; Foru AI</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Contributed to ecosystem activities: engagement, growth, and community interaction</li>
+                <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Supported awareness and adoption through active participation</li>
+                <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Running node in the Vana ecosystem (Volara)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <details class="group mt-4">
+        <summary class="flex items-center gap-2 text-xs font-medium text-[#60a5fa] cursor-pointer hover:text-[#93c5fd] transition-colors">
+          <span>Show 4 more roles</span>
+          <svg class="w-3.5 h-3.5 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="space-y-4 mt-4">
+          <div class="bg-[#121214] border border-[#1F1F23] rounded-2xl p-6 md:p-8 card-hover">
+            <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#2563EB]/20 to-[#60a5fa]/10 flex items-center justify-center shrink-0 border border-[#2563EB]/20">
+                <span class="heading text-base font-bold text-[#60a5fa]">QA</span>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2">
+                  <h3 class="heading text-sm font-bold text-white">Ambassador</h3>
+                  <span class="text-[10px] font-medium text-[#60a5fa] bg-[#2563EB]/10 px-3 py-1 rounded-full tracking-wider">Quant AI</span>
+                </div>
+                <ul class="space-y-1.5">
+                  <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Created daily promotional content across social media</li>
+                  <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Educated traders about AI trading features across 25 blockchain networks</li>
+                  <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Monitored referral performance and optimized promotional strategies</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="bg-[#121214] border border-[#1F1F23] rounded-2xl p-6 md:p-8 card-hover">
+            <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#2563EB]/20 to-[#60a5fa]/10 flex items-center justify-center shrink-0 border border-[#2563EB]/20">
+                <span class="heading text-base font-bold text-[#60a5fa]">B</span>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2">
+                  <h3 class="heading text-sm font-bold text-white">Ambassador</h3>
+                  <span class="text-[10px] font-medium text-[#60a5fa] bg-[#2563EB]/10 px-3 py-1 rounded-full tracking-wider">Bulb</span>
+                </div>
+                <ul class="space-y-1.5">
+                  <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Managed activities within the Bulb application</li>
+                  <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Created blogs, Twitter threads, articles, and video reviews</li>
+                  <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Invited and onboarded new users into the ecosystem</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="bg-[#121214] border border-[#1F1F23] rounded-2xl p-6 md:p-8 card-hover">
+            <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#2563EB]/20 to-[#60a5fa]/10 flex items-center justify-center shrink-0 border border-[#2563EB]/20">
+                <span class="heading text-base font-bold text-[#60a5fa]">K2</span>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2">
+                  <h3 class="heading text-sm font-bold text-white">Ambassador</h3>
+                  <span class="text-[10px] font-medium text-[#60a5fa] bg-[#2563EB]/10 px-3 py-1 rounded-full tracking-wider">K2 Powerblock</span>
+                </div>
+                <ul class="space-y-1.5">
+                  <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Built meaningful connections and participated in discussions</li>
+                  <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Created high-quality content: threads, videos, articles, and tutorials</li>
+                  <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Provided constructive feedback to improve the project</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="bg-[#121214] border border-[#1F1F23] rounded-2xl p-6 md:p-8 card-hover">
+            <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#2563EB]/20 to-[#60a5fa]/10 flex items-center justify-center shrink-0 border border-[#2563EB]/20">
+                <span class="heading text-base font-bold text-[#60a5fa]">S</span>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2">
+                  <h3 class="heading text-sm font-bold text-white">Ambassador</h3>
+                  <span class="text-[10px] font-medium text-[#60a5fa] bg-[#2563EB]/10 px-3 py-1 rounded-full tracking-wider">Safariq</span>
+                </div>
+                <ul class="space-y-1.5">
+                  <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Created engaging content: Twitter threads and articles</li>
+                  <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Participated in community activities and campaigns</li>
+                  <li class="flex gap-2 text-sm text-white/40"><span class="text-[#60a5fa] shrink-0 mt-1.5 w-1 h-1 rounded-full bg-[#60a5fa]"></span>Supported ecosystem launch (QAVI) and increased engagement</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 md:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#2563EB]/5 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+      <div class="section-label mb-4">COLLABORATE</div>
+      <h2 class="heading text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
+        Let's Build Something<br>
+        <span class="gradient-text">Together</span>
+      </h2>
+      <p class="text-white/40 text-base mb-8 max-w-md mx-auto">
+        Ready to scale your Web3 community and project ecosystem? Let's make it happen.
+      </p>
+      <a href="mailto:mizul240704@gmail.com" class="inline-flex items-center gap-2 gradient-blue text-white px-8 py-4 rounded-full font-semibold text-sm hover:opacity-90 transition-all card-hover shadow-lg shadow-[#2563EB]/25">
+        Start a Conversation
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer class="border-t border-[#1F1F23] py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <span class="heading text-[10px] font-bold tracking-[0.2em] text-white/20">MYZULLL</span>
+      <span class="text-xs text-white/20">&copy; 2026 Muhamad Hilmi Zulkarnaen. All Rights Reserved.</span>
+    </div>
+  </footer>
+</body>
+</html>
