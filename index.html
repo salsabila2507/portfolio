@@ -4,28 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Myzulll | Web3 Community Builder</title>
+  <meta name="description" content="Muhamad Hilmi Zulkarnaen (Myzulll). Web3 community builder. 4+ years, 63K+ members, 300+ ambassadors.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Exo+2:wght@400;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Noto+Serif+JP:wght@400;700;900&family=Exo+2:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            comic: ['Bangers', 'cursive'],
-            heading: ['Orbitron', 'monospace'],
-            body: ['Exo 2', 'sans-serif'],
-          },
-          colors: {
-            sup: {
-              red: '#E31E24',
-              blue: '#0078CC',
-              yellow: '#FFD700',
-              dark: '#1A1A2E',
-              fire: '#FF6B00',
-              ember: '#FF4500',
-            },
+            kanji: ['Noto Serif JP', 'serif'],
           },
         },
       },
@@ -33,604 +24,653 @@
   </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Exo 2', sans-serif; background: #1A1A2E; color: #fff; }
-
-    .comic-border { border: 3px solid #000; }
-    .comic-shadow { box-shadow: 5px 5px 0 #000; }
-    .comic-shadow-fire { box-shadow: 5px 5px 0 #000, 0 0 20px rgba(255,107,0,0.3); }
-
-    .fire-gradient {
-      background: linear-gradient(180deg, #FF6B00 0%, #E31E24 50%, #FF4500 100%);
+    body {
+      font-family: 'Exo 2', sans-serif;
+      background: #07070A;
+      color: #E8E1D5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: #B01018; color: #E8E1D5; }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 2px solid #E01E28; outline-offset: 3px; border-radius: 2px;
     }
 
-    .speech-bubble {
+    /* blood moon backdrop */
+    .blood-moon {
+      position: fixed; top: -18vh; right: -12vw; width: 62vw; height: 62vw;
+      max-width: 760px; max-height: 760px; border-radius: 50%; z-index: 0;
+      background: radial-gradient(circle at 38% 34%, #7a1418 0%, #4a0c11 42%, #1a0508 72%, transparent 78%);
+      filter: blur(2px); opacity: .5; pointer-events: none;
+      animation: moonPulse 11s ease-in-out infinite;
+    }
+    @keyframes moonPulse { 0%,100% { opacity:.42; } 50% { opacity:.62; } }
+
+    /* rinnegan ripple rings inside the moon */
+    .moon-rings { position: absolute; inset: 14%; border-radius: 50%; opacity: .28; }
+    .moon-rings span {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 1px solid rgba(232,225,213,.35);
+      animation: rippleOut 7s ease-out infinite;
+    }
+    @keyframes rippleOut {
+      0% { transform: scale(.28); opacity: 0; }
+      35% { opacity: .5; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+
+    /* drifting ash */
+    .ash-field { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+    .ash {
+      position: absolute; bottom: -12px; width: 3px; height: 3px; border-radius: 50%;
+      background: rgba(224,30,40,.75); box-shadow: 0 0 6px rgba(224,30,40,.9);
+      animation: emberRise linear infinite;
+    }
+    @keyframes emberRise {
+      0%   { transform: translateY(0) translateX(0); opacity: 0; }
+      12%  { opacity: .9; }
+      100% { transform: translateY(-112vh) translateX(40px); opacity: 0; }
+    }
+
+    .shell { position: relative; z-index: 2; }
+
+    /* scroll / washi paper panel */
+    .scroll-panel {
+      background:
+        linear-gradient(180deg, rgba(28,28,38,.96), rgba(12,12,18,.96)),
+        radial-gradient(circle at 20% 10%, rgba(176,16,24,.07), transparent 60%);
+      border: 1px solid rgba(232,225,213,.13);
       position: relative;
-      background: #fff;
-      border: 3px solid #000;
-      border-radius: 20px;
-      padding: 20px;
-      color: #000;
     }
-    .speech-bubble::after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      left: 30px;
-      width: 0;
-      height: 0;
-      border-left: 15px solid transparent;
-      border-right: 15px solid transparent;
-      border-top: 20px solid #000;
+    .scroll-panel::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+      opacity: .035;
     }
-    .speech-bubble::before {
-      content: '';
-      position: absolute;
-      bottom: -14px;
-      left: 33px;
-      width: 0;
-      height: 0;
-      border-left: 12px solid transparent;
-      border-right: 12px solid transparent;
-      border-top: 16px solid #fff;
-      z-index: 1;
+    .scroll-panel:hover { border-color: rgba(224,30,40,.42); }
+    .panel-hover { transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease; }
+    .panel-hover:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -18px rgba(176,16,24,.55); }
+
+    /* corner brackets, katana-guard framing */
+    .bracket::after, .bracket::before {
+      content: ''; position: absolute; width: 16px; height: 16px; pointer-events: none;
+      border-color: #B01018; border-style: solid;
+    }
+    .bracket::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+    .bracket::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+    .clan-title {
+      font-family: 'Cinzel', serif; font-weight: 900; letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .blood-text {
+      background: linear-gradient(180deg, #F04552 0%, #E01E28 40%, #8E0C14 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      filter: drop-shadow(0 0 14px rgba(224,30,40,.4));
+    }
+    .rinne-text {
+      background: linear-gradient(180deg, #C3B4F0 0%, #7C5CC4 55%, #40317A 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .vertical-kanji {
+      writing-mode: vertical-rl; text-orientation: upright;
+      letter-spacing: .32em; font-family: 'Noto Serif JP', serif;
+    }
+    .eyebrow {
+      font-family: 'Cinzel', serif; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .38em; font-size: 11px;
     }
 
-    .speech-bubble-dark {
-      background: #1A1A2E;
-      color: #fff;
-      border-color: #FFD700;
+    /* sharingan */
+    .sharingan-spin { animation: spinEye 14s linear infinite; transform-origin: center; }
+    @keyframes spinEye { to { transform: rotate(360deg); } }
+    .eye-glow { filter: drop-shadow(0 0 8px rgba(224,30,40,.75)); }
+
+    /* buttons */
+    .btn-blood {
+      position: relative; overflow: hidden; isolation: isolate;
+      background: linear-gradient(180deg, #C4131C, #7E0A11);
+      border: 1px solid rgba(240,69,82,.6); color: #F6F1E8;
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+      box-shadow: 0 0 0 rgba(224,30,40,0);
     }
-    .speech-bubble-dark::after { border-top-color: #FFD700; }
-    .speech-bubble-dark::before { border-top-color: #1A1A2E; }
-
-    .halftone {
-      background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
-      background-size: 6px 6px;
+    .btn-blood:hover { transform: translateY(-2px); box-shadow: 0 10px 26px -10px rgba(224,30,40,.75); filter: brightness(1.08); }
+    .btn-blood:active { transform: translateY(1px); }
+    .btn-blood::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(105deg, transparent 42%, rgba(255,255,255,.35) 50%, transparent 58%);
+      transform: translateX(-130%); transition: transform .65s cubic-bezier(.65,0,.35,1);
     }
-
-    .halftone-red {
-      background-image: radial-gradient(circle, rgba(227,30,36,0.25) 1px, transparent 1px);
-      background-size: 6px 6px;
+    .btn-blood:hover::before { transform: translateX(130%); }
+    .btn-ghost {
+      border: 1px solid rgba(232,225,213,.25); color: #E8E1D5;
+      transition: border-color .25s ease, color .25s ease, transform .18s ease;
     }
+    .btn-ghost:hover { border-color: #7C5CC4; color: #C3B4F0; transform: translateY(-2px); }
 
-    .halftone-fire {
-      background-image: radial-gradient(circle, rgba(255,107,0,0.25) 1px, transparent 1px);
-      background-size: 6px 6px;
+    /* stat plates */
+    .stat-plate {
+      background: linear-gradient(180deg, rgba(28,28,38,.92), rgba(10,10,16,.92));
+      border: 1px solid rgba(232,225,213,.12);
+      transition: border-color .3s ease, transform .3s ease;
     }
+    .stat-plate:hover { border-color: rgba(224,30,40,.5); transform: translateY(-3px); }
+    .stat-val { font-family: 'Cinzel', serif; font-weight: 900; font-variant-numeric: tabular-nums; }
 
-    .halftone-yellow {
-      background-image: radial-gradient(circle, rgba(255,215,0,0.25) 1px, transparent 1px);
-      background-size: 6px 6px;
-    }
-
-    .halftone-blue {
-      background-image: radial-gradient(circle, rgba(0,120,204,0.25) 1px, transparent 1px);
-      background-size: 6px 6px;
-    }
-
-    .panel { border: 3px solid #000; background: #0F0F1A; }
-
-    .action-word {
-      font-family: 'Bangers', cursive;
-      letter-spacing: 0.08em;
-      -webkit-text-stroke: 2px #000;
-      paint-order: stroke fill;
-    }
-
-    .fire-text {
-      font-family: 'Bangers', cursive;
-      background: linear-gradient(180deg, #FFD700 0%, #FF6B00 40%, #E31E24 80%, #FF4500 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      filter: drop-shadow(0 0 8px rgba(255,107,0,0.5));
+    /* section rule with tomoe */
+    .rule-tomoe { display: flex; align-items: center; gap: 14px; }
+    .rule-tomoe::before, .rule-tomoe::after {
+      content: ''; height: 1px; flex: 1;
+      background: linear-gradient(90deg, transparent, rgba(176,16,24,.55), transparent);
     }
 
-    .fire-border {
-      border: 3px solid #FF6B00;
-      box-shadow: 0 0 15px rgba(255,107,0,0.3), inset 0 0 15px rgba(255,107,0,0.1);
+    .marquee-clan { overflow: hidden; }
+    .marquee-clan-track { display: flex; width: max-content; animation: clanScroll 30s linear infinite; }
+    .marquee-clan:hover .marquee-clan-track { animation-play-state: paused; }
+    @keyframes clanScroll { to { transform: translateX(-50%); } }
+
+    .susanoo-aura {
+      box-shadow: 0 0 0 1px rgba(124,92,196,.35), 0 0 34px -8px rgba(124,92,196,.45);
     }
 
-    .s-badge {
-      font-family: 'Bangers', cursive;
-      font-size: 2rem;
-      color: #E31E24;
-      -webkit-text-stroke: 2px #FFD700;
-      paint-order: stroke fill;
-      filter: drop-shadow(0 0 10px rgba(227,30,36,0.5));
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+      .ash-field, .moon-rings { display: none; }
     }
-
-    .speed-lines::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 200%;
-      height: 200%;
-      transform: translate(-50%, -50%);
-      background: repeating-conic-gradient(
-        transparent 0deg,
-        transparent 8deg,
-        rgba(255,107,0,0.02) 8deg,
-        rgba(255,107,0,0.02) 10deg
-      );
-      pointer-events: none;
-    }
-
-    .flame-anim {
-      animation: flicker 0.8s ease-in-out infinite alternate;
-    }
-
-    @keyframes flicker {
-      0% { filter: drop-shadow(0 0 8px rgba(255,107,0,0.4)); }
-      100% { filter: drop-shadow(0 0 16px rgba(255,107,0,0.8)); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(-1deg); }
-      50% { transform: translateY(-5px) rotate(1deg); }
-    }
-
-    @keyframes burn {
-      0%, 100% { box-shadow: 5px 5px 0 #000, 0 0 15px rgba(255,107,0,0.3); }
-      50% { box-shadow: 5px 5px 0 #000, 0 0 25px rgba(255,107,0,0.6); }
-    }
-
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
 </head>
 <body>
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#1A1A2E]/95 backdrop-blur-sm border-b-[3px] border-[#FFD700]">
+
+<div class="blood-moon" aria-hidden="true">
+  <div class="moon-rings">
+    <span style="animation-delay:0s"></span>
+    <span style="animation-delay:1.75s"></span>
+    <span style="animation-delay:3.5s"></span>
+    <span style="animation-delay:5.25s"></span>
+  </div>
+</div>
+<div class="ash-field" id="ashField" aria-hidden="true"></div>
+
+<div class="shell">
+  <nav class="fixed top-0 inset-x-0 z-50 bg-[#07070A]/90 backdrop-blur-md border-b border-[#B01018]/45">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2">
-        <span class="s-badge text-xl">S</span>
-        <span class="font-comic text-xl tracking-wider text-[#FFD700]">MYZULLL</span>
+      <a href="#top" class="flex items-center gap-3" aria-label="Myzulll home">
+        <svg width="26" height="26" viewBox="0 0 40 40" class="eye-glow" aria-hidden="true">
+          <circle cx="20" cy="20" r="18" fill="#0B0B10" stroke="#B01018" stroke-width="1.6"/>
+          <circle cx="20" cy="20" r="12.5" fill="#C4131C"/>
+          <circle cx="20" cy="20" r="3.4" fill="#0B0B10"/>
+          <g class="sharingan-spin" style="transform-origin:20px 20px">
+            <path d="M20 11.4c2.6 0 4 1.5 3.6 3.2-.4 1.6-2.3 2.2-3.9 1.5-1.3-.6-1.6-2.1-.9-3.4.3-.6.7-1 1.2-1.3z" fill="#0B0B10"/>
+            <path d="M27.5 24.7c1.3 2.3.6 4.2-1.1 4.5-1.6.3-2.9-1.2-2.8-3 .1-1.4 1.4-2.3 2.8-2 .5.1.9.3 1.1.5z" fill="#0B0B10"/>
+            <path d="M12.5 24.7c-1.3 2.3-.6 4.2 1.1 4.5 1.6.3 2.9-1.2 2.8-3-.1-1.4-1.4-2.3-2.8-2-.5.1-.9.3-1.1.5z" fill="#0B0B10"/>
+          </g>
+        </svg>
+        <span class="clan-title text-lg text-[#E8E1D5]">MYZULLL</span>
       </a>
-      <div class="hidden md:flex items-center gap-6 text-sm font-bold">
-        <a href="#about" class="text-white hover:text-[#FF6B00] transition-colors">ABOUT</a>
-        <a href="#skills" class="text-white hover:text-[#FF6B00] transition-colors">SKILLS</a>
-        <a href="#experience" class="text-white hover:text-[#FF6B00] transition-colors">EXPERIENCE</a>
-        <a href="#contact" class="bg-[#E31E24] text-white px-5 py-2 comic-border comic-shadow-fire font-extrabold text-xs hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">CONTACT</a>
+      <div class="hidden md:flex items-center gap-8 eyebrow text-[#E8E1D5]/60">
+        <a href="#about" class="hover:text-[#E01E28] transition-colors duration-200">Origin</a>
+        <a href="#skills" class="hover:text-[#E01E28] transition-colors duration-200">Jutsu</a>
+        <a href="#experience" class="hover:text-[#E01E28] transition-colors duration-200">Battles</a>
+        <a href="#contact" class="btn-blood px-5 py-2 rounded-sm">Summon</a>
       </div>
-      <button class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="square" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <button class="md:hidden text-[#E8E1D5]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-[#1A1A2E] border-b-[3px] border-[#FFD700]">
-      <div class="px-6 py-4 flex flex-col gap-4 text-sm font-bold">
-        <a href="#about" class="text-white hover:text-[#FF6B00] transition-colors">ABOUT</a>
-        <a href="#skills" class="text-white hover:text-[#FF6B00] transition-colors">SKILLS</a>
-        <a href="#experience" class="text-white hover:text-[#FF6B00] transition-colors">EXPERIENCE</a>
-        <a href="#contact" class="text-[#E31E24] font-extrabold">CONTACT</a>
+    <div id="mobile-menu" class="hidden md:hidden bg-[#0B0B10] border-b border-[#B01018]/45">
+      <div class="px-6 py-5 flex flex-col gap-4 eyebrow">
+        <a href="#about" class="text-[#E8E1D5]/70 hover:text-[#E01E28] transition-colors">Origin</a>
+        <a href="#skills" class="text-[#E8E1D5]/70 hover:text-[#E01E28] transition-colors">Jutsu</a>
+        <a href="#experience" class="text-[#E8E1D5]/70 hover:text-[#E01E28] transition-colors">Battles</a>
+        <a href="#contact" class="text-[#E01E28]">Summon</a>
       </div>
     </div>
   </nav>
+  <main id="top">
 
-  <!-- HERO -->
-  <section class="min-h-screen pt-24 pb-16 relative speed-lines overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute top-0 left-0 w-full h-64 fire-gradient opacity-20 blur-3xl"></div>
-      <div class="absolute bottom-0 right-0 w-96 h-96 bg-[#E31E24]/10 rounded-full blur-3xl"></div>
-    </div>
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-      <div class="grid md:grid-cols-12 gap-4 items-start">
+  <section class="relative min-h-screen flex items-center pt-24 pb-16 px-6">
+    <span class="hidden lg:block vertical-kanji absolute left-6 top-1/2 -translate-y-1/2 text-[#B01018]/45 text-2xl select-none" aria-hidden="true">写輪眼</span>
 
-        <div class="md:col-span-8">
-          <div class="panel fire-border comic-shadow-fire relative overflow-hidden" style="animation: burn 3s ease-in-out infinite;">
-            <div class="halftone-fire absolute inset-0 pointer-events-none"></div>
-            <div class="relative z-10 p-6 md:p-10">
-              <div class="inline-block bg-[#FFD700] comic-border comic-shadow px-4 py-1 mb-6 -rotate-2">
-                <span class="font-comic text-sm tracking-wider text-[#E31E24]">WEB3 COMMUNITY BUILDER</span>
-              </div>
-              <h1 class="font-comic text-5xl md:text-7xl lg:text-8xl leading-none mb-4 tracking-wide">
-                <span class="text-white">MUHAMAD</span><br>
-                <span class="text-white">HILMI</span><br>
-                <span class="fire-text">ZULBARNAEN</span>
-              </h1>
-              <div class="speech-bubble max-w-lg mt-8">
-                <p class="text-sm md:text-base font-bold leading-relaxed">
-                  I don't just manage chats. I build communities that actually stay alive. 4+ years in Web3, from Telegram admin to leading 300+ global ambassadors.
-                </p>
-              </div>
-              <div class="flex flex-wrap gap-3 mt-8">
-                <a href="mailto:mizul240704@gmail.com" class="bg-[#E31E24] text-white px-6 py-3 comic-border comic-shadow-fire font-extrabold text-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flame-anim">GET IN TOUCH</a>
-                <a href="#experience" class="bg-[#0078CC] text-white px-6 py-3 comic-border comic-shadow font-extrabold text-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">VIEW EXPERIENCE</a>
-              </div>
-              <div class="flex gap-4 mt-6">
-                <a href="https://x.com/zulmeegp" target="_blank" rel="noopener noreferrer" class="w-10 h-10 comic-border comic-shadow bg-[#E31E24] flex items-center justify-center text-white hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all" aria-label="X">
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/mizul-lll-0253a9348/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 comic-border comic-shadow bg-[#0078CC] flex items-center justify-center text-white hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all" aria-label="LinkedIn">
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
-                <a href="https://github.com/salsabila2507" target="_blank" rel="noopener noreferrer" class="w-10 h-10 comic-border comic-shadow bg-[#FFD700] flex items-center justify-center text-[#1A1A2E] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all" aria-label="GitHub">
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                </a>
-                <a href="mailto:mizul240704@gmail.com" class="w-10 h-10 comic-border comic-shadow bg-[#FF6B00] flex items-center justify-center text-white hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flame-anim" aria-label="Email">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="square" d="M4 4h16v16H4z"/><path d="M4 4l8 8m0 0l8-8m-8 8l8 8m-8-8l-8 8"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
+    <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-12 gap-8 items-center">
+
+      <div class="lg:col-span-7">
+        <p class="hero-el eyebrow text-[#E01E28] mb-6 flex items-center gap-3">
+          <span class="w-8 h-px bg-[#B01018]" aria-hidden="true"></span>
+          Web3 Community Builder
+        </p>
+
+        <h1 class="hero-el clan-title leading-[0.92] mb-7" style="font-size: clamp(2.6rem, 7vw, 5.4rem);">
+          <span class="block text-[#E8E1D5]">Muhamad</span>
+          <span class="block text-[#E8E1D5]">Hilmi</span>
+          <span class="block blood-text">Zulkarnaen</span>
+        </h1>
+
+        <div class="hero-el scroll-panel bracket p-6 max-w-xl mb-9">
+          <p class="text-[15px] leading-relaxed text-[#E8E1D5]/80">
+            I don't just manage chats. I build communities that actually stay alive.
+            4+ years in Web3, from Telegram admin to leading 300+ global ambassadors.
+          </p>
         </div>
 
-        <div class="md:col-span-4 flex flex-col gap-4">
-          <div class="panel fire-border comic-shadow-fire relative overflow-hidden">
-            <div class="halftone-red absolute inset-0 pointer-events-none"></div>
-            <div class="relative z-10 p-4">
-              <img src="profile.jpg" alt="Myzulll" class="w-full aspect-square object-cover comic-border" style="filter: contrast(1.1) saturate(1.2);">
-            </div>
-          </div>
-          <div class="panel fire-border comic-shadow-fire relative overflow-hidden" style="animation: float 3s ease-in-out infinite, burn 3s ease-in-out infinite;">
-            <div class="halftone-red absolute inset-0 pointer-events-none"></div>
-            <div class="relative z-10 p-6 text-center">
-              <div class="action-word text-6xl md:text-7xl text-[#FFD700] mb-2 flame-anim">4+</div>
-              <div class="font-extrabold text-sm text-[#FF6B00]">YEARS</div>
-            </div>
-          </div>
-          <div class="panel fire-border comic-shadow-fire relative overflow-hidden" style="animation: float 3s ease-in-out infinite 0.5s, burn 3s ease-in-out infinite 0.5s;">
-            <div class="halftone-blue absolute inset-0 pointer-events-none"></div>
-            <div class="relative z-10 p-6 text-center">
-              <div class="action-word text-5xl md:text-6xl text-[#0078CC] mb-2">63K+</div>
-              <div class="font-extrabold text-sm text-[#0078CC]">MEMBERS</div>
-            </div>
-          </div>
-          <div class="panel fire-border comic-shadow-fire relative overflow-hidden" style="animation: float 3s ease-in-out infinite 1s, burn 3s ease-in-out infinite 1s;">
-            <div class="halftone-yellow absolute inset-0 pointer-events-none"></div>
-            <div class="relative z-10 p-6 text-center">
-              <div class="action-word text-5xl md:text-6xl text-[#E31E24] mb-2 flame-anim">300+</div>
-              <div class="font-extrabold text-sm text-[#E31E24]">AMBASSADORS</div>
-            </div>
-          </div>
+        <div class="hero-el flex flex-wrap gap-4 mb-8">
+          <a href="mailto:mizul240704@gmail.com" class="btn-blood px-7 py-3.5 rounded-sm clan-title text-xs">Get In Touch</a>
+          <a href="#experience" class="btn-ghost px-7 py-3.5 rounded-sm clan-title text-xs">View Battles</a>
         </div>
 
+        <div class="hero-el flex gap-3">
+          <a href="https://x.com/zulmeegp" target="_blank" rel="noopener noreferrer" aria-label="X (@zulmeegp)"
+             class="w-11 h-11 rounded-sm border border-[#E8E1D5]/20 flex items-center justify-center text-[#E8E1D5]/70 hover:text-[#E01E28] hover:border-[#B01018] transition-colors duration-200">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/mizul-lll-0253a9348/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+             class="w-11 h-11 rounded-sm border border-[#E8E1D5]/20 flex items-center justify-center text-[#E8E1D5]/70 hover:text-[#7C5CC4] hover:border-[#7C5CC4] transition-colors duration-200">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://github.com/salsabila2507" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+             class="w-11 h-11 rounded-sm border border-[#E8E1D5]/20 flex items-center justify-center text-[#E8E1D5]/70 hover:text-[#E8E1D5] hover:border-[#E8E1D5]/60 transition-colors duration-200">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="mailto:mizul240704@gmail.com" aria-label="Email"
+             class="w-11 h-11 rounded-sm border border-[#E8E1D5]/20 flex items-center justify-center text-[#E8E1D5]/70 hover:text-[#E01E28] hover:border-[#B01018] transition-colors duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="m2 7 10 6 10-6"/></svg>
+          </a>
+        </div>
       </div>
+
+      <div class="lg:col-span-5 flex flex-col gap-4">
+        <div class="hero-el scroll-panel bracket susanoo-aura p-3 relative">
+          <img src="profile.jpg" alt="Portrait of Muhamad Hilmi Zulkarnaen" class="w-full aspect-square object-cover rounded-sm" style="filter: contrast(1.08) saturate(.92) brightness(.94);">
+          <span class="absolute bottom-6 right-6 font-kanji text-[#E8E1D5]/85 text-sm tracking-widest bg-[#07070A]/80 border border-[#B01018]/50 px-3 py-1 rounded-sm">うちは</span>
+        </div>
+
+        <dl class="grid grid-cols-3 gap-3">
+          <div class="hero-el stat-plate bracket relative p-4 text-center">
+            <dd class="stat-val text-3xl blood-text"><span data-count="4">0</span>+</dd>
+            <dt class="eyebrow text-[10px] text-[#E8E1D5]/50 mt-2">Years</dt>
+          </div>
+          <div class="hero-el stat-plate bracket relative p-4 text-center">
+            <dd class="stat-val text-3xl rinne-text"><span data-count="63">0</span>K+</dd>
+            <dt class="eyebrow text-[10px] text-[#E8E1D5]/50 mt-2">Members</dt>
+          </div>
+          <div class="hero-el stat-plate bracket relative p-4 text-center">
+            <dd class="stat-val text-3xl blood-text"><span data-count="300">0</span>+</dd>
+            <dt class="eyebrow text-[10px] text-[#E8E1D5]/50 mt-2">Ambassadors</dt>
+          </div>
+        </dl>
+      </div>
+
     </div>
   </section>
+  <div class="marquee-clan border-y border-[#B01018]/35 py-3.5 select-none bg-[#0B0B10]/70" aria-hidden="true">
+    <div class="marquee-clan-track clan-title text-xs text-[#E8E1D5]/45">
+      <span class="shrink-0">Community Management&nbsp;<span class="text-[#B01018]">&#10022;</span>&nbsp;Ambassador Programs&nbsp;<span class="text-[#B01018]">&#10022;</span>&nbsp;Node Operations&nbsp;<span class="text-[#B01018]">&#10022;</span>&nbsp;Growth Campaigns&nbsp;<span class="text-[#B01018]">&#10022;</span>&nbsp;Content Creation&nbsp;<span class="text-[#B01018]">&#10022;</span>&nbsp;63K+ Members&nbsp;<span class="text-[#B01018]">&#10022;</span>&nbsp;300+ Ambassadors&nbsp;<span class="text-[#B01018]">&#10022;</span>&nbsp;</span>
+      <span class="shrink-0">Community Management&nbsp;<span class="text-[#B01018]">&#10022;</span>&nbsp;Ambassador Programs&nbsp;<span class="text-[#B01018]">&#10022;</span>&nbsp;Node Operations&nbsp;<span class="text-[#B01018]">&#10022;</span>&nbsp;Growth Campaigns&nbsp;<span class="text-[#B01018]">&#10022;</span>&nbsp;Content Creation&nbsp;<span class="text-[#B01018]">&#10022;</span>&nbsp;63K+ Members&nbsp;<span class="text-[#B01018]">&#10022;</span>&nbsp;300+ Ambassadors&nbsp;<span class="text-[#B01018]">&#10022;</span>&nbsp;</span>
+    </div>
+  </div>
+  <section id="about" class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <p class="reveal eyebrow text-[#E01E28] mb-4">Origin</p>
+    <h2 class="reveal clan-title text-3xl md:text-5xl leading-tight mb-12">
+      Communities Aren't Just <span class="blood-text">Chat Groups</span>
+    </h2>
 
-  <!-- ABOUT -->
-  <section id="about" class="py-16 md:py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="panel fire-border comic-shadow-fire relative overflow-hidden" style="animation: burn 4s ease-in-out infinite;">
-        <div class="halftone absolute inset-0 pointer-events-none"></div>
-        <div class="relative z-10 p-6 md:p-10">
-          <div class="inline-block bg-[#0078CC] comic-border comic-shadow px-4 py-1 mb-6 rotate-1">
-            <span class="font-comic text-sm tracking-wider text-white">ABOUT</span>
-          </div>
-          <h2 class="font-comic text-3xl md:text-5xl mb-6 tracking-wide text-white">
-            COMMUNITIES AREN'T JUST <span class="fire-text">CHAT GROUPS</span>
-          </h2>
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="space-y-4 text-sm md:text-base font-medium leading-relaxed text-white/80">
-              <p>I started as a regular Telegram admin. Now I manage 63K+ members across Discord and Telegram. From zero to here, I know what makes a community actually work. Not just numbers on a dashboard.</p>
-              <p>Deep in the Web3 trenches: DeFi, DePIN, AI, CeFi, NFT, GameFi, prediction markets. Running nodes, testnets, validators. The technical stuff? I love it.</p>
-              <p>Community management is more than moderating chats. I build ambassador programs, write SOPs, create content, coordinate 50-100 person events. My goal: make Web3 feel less intimidating for everyone.</p>
-            </div>
-            <div class="speech-bubble-dark">
-              <p class="text-sm font-bold leading-relaxed">"People think community managers just sit in chat rooms. Nah. I run systems, manage 300+ ambassadors worldwide, and build retention strategies from scratch. That's the real work."</p>
-            </div>
-          </div>
-        </div>
+    <div class="grid lg:grid-cols-[1.3fr_1fr] gap-6">
+      <div class="reveal scroll-panel bracket panel-hover p-7 md:p-9 space-y-5 text-[15px] leading-relaxed text-[#E8E1D5]/75">
+        <p>I started as a regular Telegram admin. Now I manage 63K+ members across Discord and Telegram. From zero to here, I know what makes a community actually work. Not just numbers on a dashboard.</p>
+        <p>Deep in the Web3 trenches: DeFi, DePIN, AI, CeFi, NFT, GameFi, prediction markets. Running nodes, testnets, validators. The technical stuff? I love it.</p>
+        <p>Community management is more than moderating chats. I build ambassador programs, write SOPs, create content, coordinate 50-100 person events. My goal: make Web3 feel less intimidating for everyone.</p>
       </div>
+
+      <blockquote class="reveal scroll-panel bracket panel-hover p-7 md:p-9 flex flex-col justify-center relative">
+        <span class="font-kanji text-6xl text-[#B01018]/35 leading-none mb-3" aria-hidden="true">&#12300;</span>
+        <p class="text-[15px] leading-relaxed text-[#E8E1D5]/85 italic">People think community managers just sit in chat rooms. Nah. I run systems, manage 300+ ambassadors worldwide, and build retention strategies from scratch. That's the real work.</p>
+        <footer class="mt-6 eyebrow text-[10px] text-[#E01E28]">Myzulll</footer>
+      </blockquote>
     </div>
   </section>
+  <section id="skills" class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <p class="reveal eyebrow text-[#E01E28] mb-4">Jutsu Arsenal</p>
+    <h2 class="reveal clan-title text-3xl md:text-5xl leading-tight mb-12">
+      What I <span class="blood-text">Bring</span> To The Table
+    </h2>
 
-  <!-- SKILLS -->
-  <section id="skills" class="py-16 md:py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="inline-block bg-[#E31E24] comic-border comic-shadow px-4 py-1 mb-6 -rotate-1">
-        <span class="font-comic text-sm tracking-wider text-white">MY SKILLS</span>
-      </div>
-      <h2 class="font-comic text-3xl md:text-5xl mb-8 tracking-wide text-white">
-        WHAT I <span class="fire-text">BRING</span> TO THE TABLE
-      </h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-
-        <div class="panel fire-border comic-shadow-fire hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all relative overflow-hidden flame-anim">
-          <div class="halftone-red absolute inset-0 opacity-15 pointer-events-none"></div>
-          <div class="relative z-10 p-5">
-            <div class="w-10 h-10 comic-border bg-[#E31E24] flex items-center justify-center mb-3">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="square" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
-            </div>
-            <div class="font-comic text-xs text-[#FF6B00] mb-1 tracking-wider">FIRE</div>
-            <h3 class="font-extrabold text-sm text-white mb-1">Community Management</h3>
-            <p class="text-xs font-medium text-white/60">Making Telegram and Discord communities actually thrive. Not just moderation, real engagement.</p>
-          </div>
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 list-none">
+      <li class="reveal scroll-panel bracket panel-hover p-6 relative">
+        <div class="flex items-start justify-between mb-5">
+          <span class="w-10 h-10 rounded-sm border border-[#B01018]/60 bg-[#B01018]/12 flex items-center justify-center text-[#E01E28]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path stroke-linecap="round" d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          <span class="font-kanji text-[#E8E1D5]/25 text-xl" aria-hidden="true">&#28779;</span>
         </div>
+        <h3 class="clan-title text-sm text-[#E8E1D5] mb-2">Community Management</h3>
+        <p class="text-[13px] leading-relaxed text-[#E8E1D5]/55">Making Telegram and Discord communities actually thrive. Not just moderation, real engagement.</p>
+      </li>
 
-        <div class="panel fire-border comic-shadow-fire hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all relative overflow-hidden">
-          <div class="halftone-blue absolute inset-0 opacity-15 pointer-events-none"></div>
-          <div class="relative z-10 p-5">
-            <div class="w-10 h-10 comic-border bg-[#0078CC] flex items-center justify-center mb-3">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="square" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
-            </div>
-            <div class="font-comic text-xs text-[#0078CC] mb-1 tracking-wider">WATER</div>
-            <h3 class="font-extrabold text-sm text-white mb-1">Ambassador Programs</h3>
-            <p class="text-xs font-medium text-white/60">Building systems from scratch. Training, evaluating, and scaling global ambassador networks.</p>
-          </div>
+      <li class="reveal scroll-panel bracket panel-hover p-6 relative">
+        <div class="flex items-start justify-between mb-5">
+          <span class="w-10 h-10 rounded-sm border border-[#7C5CC4]/60 bg-[#7C5CC4]/12 flex items-center justify-center text-[#A692E0]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+          </span>
+          <span class="font-kanji text-[#E8E1D5]/25 text-xl" aria-hidden="true">&#27700;</span>
         </div>
+        <h3 class="clan-title text-sm text-[#E8E1D5] mb-2">Ambassador Programs</h3>
+        <p class="text-[13px] leading-relaxed text-[#E8E1D5]/55">Building systems from scratch. Training, evaluating, and scaling global ambassador networks.</p>
+      </li>
 
-        <div class="panel fire-border comic-shadow-fire hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all relative overflow-hidden flame-anim">
-          <div class="halftone-yellow absolute inset-0 opacity-15 pointer-events-none"></div>
-          <div class="relative z-10 p-5">
-            <div class="w-10 h-10 comic-border bg-[#FFD700] flex items-center justify-center mb-3">
-              <svg class="w-5 h-5 text-[#1A1A2E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="square" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
-            </div>
-            <div class="font-comic text-xs text-[#FFD700] mb-1 tracking-wider">EARTH</div>
-            <h3 class="font-extrabold text-sm text-white mb-1">Crypto & Node Tech</h3>
-            <p class="text-xs font-medium text-white/60">Testnets, validators, node operations. I get my hands dirty with the technical side.</p>
-          </div>
+      <li class="reveal scroll-panel bracket panel-hover p-6 relative">
+        <div class="flex items-start justify-between mb-5">
+          <span class="w-10 h-10 rounded-sm border border-[#B01018]/60 bg-[#B01018]/12 flex items-center justify-center text-[#E01E28]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m13 2-2 9h5l-3 11 7-13h-5l3-7z"/></svg>
+          </span>
+          <span class="font-kanji text-[#E8E1D5]/25 text-xl" aria-hidden="true">&#38647;</span>
         </div>
+        <h3 class="clan-title text-sm text-[#E8E1D5] mb-2">Crypto &amp; Node Tech</h3>
+        <p class="text-[13px] leading-relaxed text-[#E8E1D5]/55">Testnets, validators, node operations. I get my hands dirty with the technical side.</p>
+      </li>
 
-        <div class="panel fire-border comic-shadow-fire hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all relative overflow-hidden">
-          <div class="halftone absolute inset-0 opacity-15 pointer-events-none"></div>
-          <div class="relative z-10 p-5">
-            <div class="w-10 h-10 comic-border bg-[#FF6B00] flex items-center justify-center mb-3">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="square" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
-            </div>
-            <div class="font-comic text-xs text-[#FF6B00] mb-1 tracking-wider">AIR</div>
-            <h3 class="font-extrabold text-sm text-white mb-1">Growth & Campaigns</h3>
-            <p class="text-xs font-medium text-white/60">Events, engagement strategies, campaigns that actually move the needle.</p>
-          </div>
+      <li class="reveal scroll-panel bracket panel-hover p-6 relative">
+        <div class="flex items-start justify-between mb-5">
+          <span class="w-10 h-10 rounded-sm border border-[#7C5CC4]/60 bg-[#7C5CC4]/12 flex items-center justify-center text-[#A692E0]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17V7m6 10V4m6 13v-7m6 7V9"/></svg>
+          </span>
+          <span class="font-kanji text-[#E8E1D5]/25 text-xl" aria-hidden="true">&#39080;</span>
         </div>
+        <h3 class="clan-title text-sm text-[#E8E1D5] mb-2">Growth &amp; Campaigns</h3>
+        <p class="text-[13px] leading-relaxed text-[#E8E1D5]/55">Events, engagement strategies, campaigns that actually move the needle.</p>
+      </li>
 
-        <div class="panel fire-border comic-shadow-fire hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all relative overflow-hidden flame-anim">
-          <div class="halftone-red absolute inset-0 opacity-15 pointer-events-none"></div>
-          <div class="relative z-10 p-5">
-            <div class="w-10 h-10 comic-border bg-[#E31E24] flex items-center justify-center mb-3">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="square" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>
-            </div>
-            <div class="font-comic text-xs text-[#FF6B00] mb-1 tracking-wider">FIRE</div>
-            <h3 class="font-extrabold text-sm text-white mb-1">Content Creation</h3>
-            <p class="text-xs font-medium text-white/60">Threads, memes, infographics, articles. Content people actually want to read.</p>
-          </div>
+      <li class="reveal scroll-panel bracket panel-hover p-6 relative">
+        <div class="flex items-start justify-between mb-5">
+          <span class="w-10 h-10 rounded-sm border border-[#B01018]/60 bg-[#B01018]/12 flex items-center justify-center text-[#E01E28]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+          </span>
+          <span class="font-kanji text-[#E8E1D5]/25 text-xl" aria-hidden="true">&#28779;</span>
         </div>
+        <h3 class="clan-title text-sm text-[#E8E1D5] mb-2">Content Creation</h3>
+        <p class="text-[13px] leading-relaxed text-[#E8E1D5]/55">Threads, memes, infographics, articles. Content people actually want to read.</p>
+      </li>
 
-        <div class="panel fire-border comic-shadow-fire hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all relative overflow-hidden">
-          <div class="halftone-blue absolute inset-0 opacity-15 pointer-events-none"></div>
-          <div class="relative z-10 p-5">
-            <div class="w-10 h-10 comic-border bg-[#0078CC] flex items-center justify-center mb-3">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="square" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"/></svg>
-            </div>
-            <div class="font-comic text-xs text-[#0078CC] mb-1 tracking-wider">WATER</div>
-            <h3 class="font-extrabold text-sm text-white mb-1">Video Editing</h3>
-            <p class="text-xs font-medium text-white/60">Tutorials, reviews, visual content for Web3 projects.</p>
-          </div>
+      <li class="reveal scroll-panel bracket panel-hover p-6 relative">
+        <div class="flex items-start justify-between mb-5">
+          <span class="w-10 h-10 rounded-sm border border-[#7C5CC4]/60 bg-[#7C5CC4]/12 flex items-center justify-center text-[#A692E0]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m16 10 5-3v10l-5-3M3 7h13v10H3z"/></svg>
+          </span>
+          <span class="font-kanji text-[#E8E1D5]/25 text-xl" aria-hidden="true">&#27700;</span>
         </div>
+        <h3 class="clan-title text-sm text-[#E8E1D5] mb-2">Video Editing</h3>
+        <p class="text-[13px] leading-relaxed text-[#E8E1D5]/55">Tutorials, reviews, visual content for Web3 projects.</p>
+      </li>
 
-        <div class="panel fire-border comic-shadow-fire hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all relative overflow-hidden flame-anim">
-          <div class="halftone-yellow absolute inset-0 opacity-15 pointer-events-none"></div>
-          <div class="relative z-10 p-5">
-            <div class="w-10 h-10 comic-border bg-[#FFD700] flex items-center justify-center mb-3">
-              <svg class="w-5 h-5 text-[#1A1A2E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="square" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501A12.435 12.435 0 0012 18.24c.634.538 1.378.964 2.197 1.251M21.75 13.5a.75.75 0 01-.75.75H20.25a.75.75 0 01-.75-.75v-4.5a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v4.5zm-15 0a.75.75 0 01-.75.75H4.5a.75.75 0 01-.75-.75v-4.5a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v4.5z"/></svg>
-            </div>
-            <div class="font-comic text-xs text-[#FFD700] mb-1 tracking-wider">EARTH</div>
-            <h3 class="font-extrabold text-sm text-white mb-1">Bilingual Comms</h3>
-            <p class="text-xs font-medium text-white/60">Fluent in Indonesian and English. Bridging global audiences.</p>
-          </div>
+      <li class="reveal scroll-panel bracket panel-hover p-6 relative">
+        <div class="flex items-start justify-between mb-5">
+          <span class="w-10 h-10 rounded-sm border border-[#B01018]/60 bg-[#B01018]/12 flex items-center justify-center text-[#E01E28]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </span>
+          <span class="font-kanji text-[#E8E1D5]/25 text-xl" aria-hidden="true">&#22303;</span>
         </div>
+        <h3 class="clan-title text-sm text-[#E8E1D5] mb-2">Bilingual Comms</h3>
+        <p class="text-[13px] leading-relaxed text-[#E8E1D5]/55">Fluent in Indonesian and English. Bridging global audiences.</p>
+      </li>
 
-        <div class="panel fire-border comic-shadow-fire hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all relative overflow-hidden">
-          <div class="halftone absolute inset-0 opacity-15 pointer-events-none"></div>
-          <div class="relative z-10 p-5">
-            <div class="w-10 h-10 comic-border bg-[#FF6B00] flex items-center justify-center mb-3">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="square" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
-            </div>
-            <div class="font-comic text-xs text-[#FF6B00] mb-1 tracking-wider">AIR</div>
-            <h3 class="font-extrabold text-sm text-white mb-1">Networking</h3>
-            <p class="text-xs font-medium text-white/60">Building real connections with founders, KOLs, and ecosystem partners.</p>
-          </div>
+      <li class="reveal scroll-panel bracket panel-hover p-6 relative">
+        <div class="flex items-start justify-between mb-5">
+          <span class="w-10 h-10 rounded-sm border border-[#7C5CC4]/60 bg-[#7C5CC4]/12 flex items-center justify-center text-[#A692E0]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path stroke-linecap="round" d="m6.7 7.3 3 3m4.6 0 3-3m-10.6 9.4 3-3m4.6 0 3 3"/></svg>
+          </span>
+          <span class="font-kanji text-[#E8E1D5]/25 text-xl" aria-hidden="true">&#39080;</span>
         </div>
-
-      </div>
-    </div>
+        <h3 class="clan-title text-sm text-[#E8E1D5] mb-2">Networking</h3>
+        <p class="text-[13px] leading-relaxed text-[#E8E1D5]/55">Building real connections with founders, KOLs, and ecosystem partners.</p>
+      </li>
+    </ul>
   </section>
+  <section id="experience" class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <p class="reveal eyebrow text-[#E01E28] mb-4">Battle Record</p>
+    <h2 class="reveal clan-title text-3xl md:text-5xl leading-tight mb-12">
+      Where I've <span class="blood-text">Made My Mark</span>
+    </h2>
 
-  <!-- EXPERIENCE -->
-  <section id="experience" class="py-16 md:py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="inline-block bg-[#FFD700] comic-border comic-shadow px-4 py-1 mb-6 rotate-1">
-        <span class="font-comic text-sm tracking-wider text-[#1A1A2E]">EXPERIENCE</span>
-      </div>
-      <h2 class="font-comic text-3xl md:text-5xl mb-8 tracking-wide text-white">
-        WHERE I'VE <span class="fire-text">MADE MY MARK</span>
-      </h2>
-      <div class="grid md:grid-cols-2 gap-4">
+    <div class="grid md:grid-cols-2 gap-4">
+      <article class="reveal scroll-panel bracket panel-hover p-6">
+        <header class="flex items-center gap-4 mb-5 pb-5 border-b border-[#E8E1D5]/10">
+          <span class="w-11 h-11 shrink-0 rounded-sm border border-[#B01018]/60 bg-[#B01018]/12 flex items-center justify-center clan-title text-xs text-[#E01E28]">AW</span>
+          <div>
+            <h3 class="clan-title text-sm text-[#E8E1D5]">Community Manager</h3>
+            <p class="eyebrow text-[10px] text-[#E01E28] mt-1">Antarctic Wallet</p>
+          </div>
+        </header>
+        <ul class="space-y-2.5 list-none">
+          <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#B01018] shrink-0" aria-hidden="true">&#10022;</span>Led 300+ global ambassadors. Built SOPs, training, and retention programs from scratch.</li>
+          <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#B01018] shrink-0" aria-hidden="true">&#10022;</span>Designed reward systems that actually kept people engaged.</li>
+          <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#B01018] shrink-0" aria-hidden="true">&#10022;</span>Created onboarding materials used across multiple regions.</li>
+        </ul>
+      </article>
 
-        <div class="panel fire-border comic-shadow-fire hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
-          <div class="p-6">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="w-10 h-10 comic-border bg-[#E31E24] flex items-center justify-center shrink-0">
-                <span class="font-comic text-sm text-white">AW</span>
-              </div>
-              <div>
-                <h3 class="font-extrabold text-sm text-white">Community Manager</h3>
-                <span class="text-[10px] font-bold text-[#FF6B00]">Antarctic Wallet</span>
-              </div>
-            </div>
-            <ul class="space-y-1">
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Led 300+ global ambassadors. Built SOPs, training, and retention programs from scratch.</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Designed reward systems that actually kept people engaged.</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Created onboarding materials used across multiple regions.</li>
-            </ul>
+      <article class="reveal scroll-panel bracket panel-hover p-6">
+        <header class="flex items-center gap-4 mb-5 pb-5 border-b border-[#E8E1D5]/10">
+          <span class="w-11 h-11 shrink-0 rounded-sm border border-[#7C5CC4]/60 bg-[#7C5CC4]/12 flex items-center justify-center clan-title text-xs text-[#A692E0]">DE</span>
+          <div>
+            <h3 class="clan-title text-sm text-[#E8E1D5]">Moderator</h3>
+            <p class="eyebrow text-[10px] text-[#A692E0] mt-1">Dubhe Engine</p>
           </div>
-        </div>
+        </header>
+        <ul class="space-y-2.5 list-none">
+          <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#7C5CC4] shrink-0" aria-hidden="true">&#10022;</span>Ran a community of 63K+ members across Discord and Telegram.</li>
+          <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#7C5CC4] shrink-0" aria-hidden="true">&#10022;</span>Kept things clean, safe, and spam-free. Handled real-time support.</li>
+          <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#7C5CC4] shrink-0" aria-hidden="true">&#10022;</span>Organized events with 50-100 active participants.</li>
+        </ul>
+      </article>
 
-        <div class="panel fire-border comic-shadow-fire hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
-          <div class="p-6">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="w-10 h-10 comic-border bg-[#0078CC] flex items-center justify-center shrink-0">
-                <span class="font-comic text-sm text-white">DE</span>
-              </div>
-              <div>
-                <h3 class="font-extrabold text-sm text-white">Moderator</h3>
-                <span class="text-[10px] font-bold text-[#0078CC]">Dubhe Engine</span>
-              </div>
-            </div>
-            <ul class="space-y-1">
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>Ran a community of 63K+ members across Discord and Telegram.</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>Kept things clean, safe, and spam-free. Handled real-time support.</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>Organized events with 50-100 active participants.</li>
-            </ul>
+      <article class="reveal scroll-panel bracket panel-hover p-6">
+        <header class="flex items-center gap-4 mb-5 pb-5 border-b border-[#E8E1D5]/10">
+          <span class="w-11 h-11 shrink-0 rounded-sm border border-[#B01018]/60 bg-[#B01018]/12 flex items-center justify-center clan-title text-xs text-[#E01E28]">SY</span>
+          <div>
+            <h3 class="clan-title text-sm text-[#E8E1D5]">Inner Circle</h3>
+            <p class="eyebrow text-[10px] text-[#E01E28] mt-1">Syndicate</p>
           </div>
-        </div>
+        </header>
+        <ul class="space-y-2.5 list-none">
+          <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#B01018] shrink-0" aria-hidden="true">&#10022;</span>Created content that got people talking: threads, memes, infographics.</li>
+          <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#B01018] shrink-0" aria-hidden="true">&#10022;</span>Active in Discord and Telegram. Showed up consistently.</li>
+          <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#B01018] shrink-0" aria-hidden="true">&#10022;</span>Weekly meetings. Real contributions to ecosystem growth.</li>
+        </ul>
+      </article>
 
-        <div class="panel fire-border comic-shadow-fire hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
-          <div class="p-6">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="w-10 h-10 comic-border bg-[#FFD700] flex items-center justify-center shrink-0">
-                <span class="font-comic text-sm text-[#1A1A2E]">S</span>
-              </div>
-              <div>
-                <h3 class="font-extrabold text-sm text-white">Inner Circle</h3>
-                <span class="text-[10px] font-bold text-[#FFD700]">Syndicate</span>
-              </div>
-            </div>
-            <ul class="space-y-1">
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Created content that got people talking: threads, memes, infographics.</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Active in Discord and Telegram. Showed up consistently.</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Weekly meetings. Real contributions to ecosystem growth.</li>
-            </ul>
+      <article class="reveal scroll-panel bracket panel-hover p-6">
+        <header class="flex items-center gap-4 mb-5 pb-5 border-b border-[#E8E1D5]/10">
+          <span class="w-11 h-11 shrink-0 rounded-sm border border-[#7C5CC4]/60 bg-[#7C5CC4]/12 flex items-center justify-center clan-title text-xs text-[#A692E0]">KF</span>
+          <div>
+            <h3 class="clan-title text-sm text-[#E8E1D5]">Web3 Contributor</h3>
+            <p class="eyebrow text-[10px] text-[#A692E0] mt-1">Kaia Chain &amp; Foru AI</p>
           </div>
-        </div>
-
-        <div class="panel fire-border comic-shadow-fire hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
-          <div class="p-6">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="w-10 h-10 comic-border bg-[#FF6B00] flex items-center justify-center shrink-0">
-                <span class="font-comic text-sm text-white">KF</span>
-              </div>
-              <div>
-                <h3 class="font-extrabold text-sm text-white">Web3 Contributor</h3>
-                <span class="text-[10px] font-bold text-[#FF6B00]">Kaia Chain & Foru AI</span>
-              </div>
-            </div>
-            <ul class="space-y-1">
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Ecosystem engagement, growth, community interaction. Hands-on work.</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Driving awareness and adoption through active participation.</li>
-              <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Running a node in the Vana ecosystem (Volara).</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-      <details class="mt-4 group">
-        <summary class="flex items-center gap-2 text-xs font-bold text-[#FF6B00] cursor-pointer hover:text-[#FFD700] transition-colors">
-          <span>4 more roles</span>
-          <svg class="w-3.5 h-3.5 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="square" d="M19 9l-7 7-7-7"/></svg>
-        </summary>
-        <div class="grid md:grid-cols-2 gap-4 mt-4">
-          <div class="panel fire-border comic-shadow-fire">
-            <div class="p-6">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 comic-border bg-[#E31E24] flex items-center justify-center shrink-0">
-                  <span class="font-comic text-sm text-white">QA</span>
-                </div>
-                <div>
-                  <h3 class="font-extrabold text-sm text-white">Ambassador</h3>
-                  <span class="text-[10px] font-bold text-[#FF6B00]">Quant AI</span>
-                </div>
-              </div>
-              <ul class="space-y-1">
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Daily promo content across social media.</li>
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Educated traders on AI trading across 25 blockchain networks.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="panel fire-border comic-shadow-fire">
-            <div class="p-6">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 comic-border bg-[#0078CC] flex items-center justify-center shrink-0">
-                  <span class="font-comic text-sm text-white">B</span>
-                </div>
-                <div>
-                  <h3 class="font-extrabold text-sm text-white">Ambassador</h3>
-                  <span class="text-[10px] font-bold text-[#0078CC]">Bulb</span>
-                </div>
-              </div>
-              <ul class="space-y-1">
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>Managed activities in the Bulb application.</li>
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#0078CC] shrink-0">&#9679;</span>Blogs, Twitter threads, articles, video reviews.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="panel fire-border comic-shadow-fire">
-            <div class="p-6">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 comic-border bg-[#FFD700] flex items-center justify-center shrink-0">
-                  <span class="font-comic text-sm text-[#1A1A2E]">K2</span>
-                </div>
-                <div>
-                  <h3 class="font-extrabold text-sm text-white">Ambassador</h3>
-                  <span class="text-[10px] font-bold text-[#FFD700]">K2 Powerblock</span>
-                </div>
-              </div>
-              <ul class="space-y-1">
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Built connections and contributed to discussions.</li>
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FFD700] shrink-0">&#9679;</span>Created threads, videos, articles, tutorials.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="panel fire-border comic-shadow-fire">
-            <div class="p-6">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 comic-border bg-[#FF6B00] flex items-center justify-center shrink-0">
-                  <span class="font-comic text-sm text-white">S</span>
-                </div>
-                <div>
-                  <h3 class="font-extrabold text-sm text-white">Ambassador</h3>
-                  <span class="text-[10px] font-bold text-[#FF6B00]">Safariq</span>
-                </div>
-              </div>
-              <ul class="space-y-1">
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Twitter threads and articles that drove engagement.</li>
-                <li class="flex gap-2 text-xs font-medium text-white/60"><span class="text-[#FF6B00] shrink-0">&#9679;</span>Active in community campaigns and activities.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </details>
+        </header>
+        <ul class="space-y-2.5 list-none">
+          <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#7C5CC4] shrink-0" aria-hidden="true">&#10022;</span>Ecosystem engagement, growth, community interaction. Hands-on work.</li>
+          <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#7C5CC4] shrink-0" aria-hidden="true">&#10022;</span>Driving awareness and adoption through active participation.</li>
+          <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#7C5CC4] shrink-0" aria-hidden="true">&#10022;</span>Running a node in the Vana ecosystem (Volara).</li>
+        </ul>
+      </article>
     </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="py-16 md:py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="panel fire-border comic-shadow-fire relative overflow-hidden" style="animation: burn 3s ease-in-out infinite;">
-        <div class="halftone-fire absolute inset-0 opacity-10 pointer-events-none"></div>
-        <div class="relative z-10 p-8 md:p-12 text-center">
-          <div class="inline-block bg-[#FF6B00] comic-border comic-shadow px-4 py-1 mb-6 -rotate-1">
-            <span class="font-comic text-sm tracking-wider text-white">LET'S WORK</span>
-          </div>
-          <h2 class="font-comic text-4xl md:text-6xl mb-4 tracking-wide text-white">
-            READY TO BUILD<br>
-            <span class="fire-text">SOMETHING GREAT?</span>
-          </h2>
-          <p class="text-sm md:text-base font-medium text-white/50 mb-8 max-w-md mx-auto">
-            Want to scale your Web3 community? I'm here. Let's make it happen.</p>
-          <a href="mailto:mizul240704@gmail.com" class="inline-flex items-center gap-2 bg-[#E31E24] text-white px-8 py-4 comic-border comic-shadow-fire font-extrabold text-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flame-anim">
-            LET'S TALK
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="square" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+    <details class="reveal mt-5 group">
+      <summary class="flex items-center gap-2.5 eyebrow text-[11px] text-[#E01E28] cursor-pointer hover:text-[#F04552] transition-colors w-fit">
+        <span>4 More Battles</span>
+        <svg class="w-3.5 h-3.5 group-open:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="m19 9-7 7-7-7"/></svg>
+      </summary>
+      <div class="grid md:grid-cols-2 gap-4 mt-5">
+        <article class="scroll-panel bracket panel-hover p-6">
+          <header class="flex items-center gap-4 mb-5 pb-5 border-b border-[#E8E1D5]/10">
+            <span class="w-11 h-11 shrink-0 rounded-sm border border-[#B01018]/60 bg-[#B01018]/12 flex items-center justify-center clan-title text-xs text-[#E01E28]">QA</span>
+            <div>
+              <h3 class="clan-title text-sm text-[#E8E1D5]">Ambassador</h3>
+              <p class="eyebrow text-[10px] text-[#E01E28] mt-1">Quant AI</p>
+            </div>
+          </header>
+          <ul class="space-y-2.5 list-none">
+            <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#B01018] shrink-0" aria-hidden="true">&#10022;</span>Daily promo content across social media.</li>
+            <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#B01018] shrink-0" aria-hidden="true">&#10022;</span>Educated traders on AI trading across 25 blockchain networks.</li>
+          </ul>
+        </article>
+
+        <article class="scroll-panel bracket panel-hover p-6">
+          <header class="flex items-center gap-4 mb-5 pb-5 border-b border-[#E8E1D5]/10">
+            <span class="w-11 h-11 shrink-0 rounded-sm border border-[#7C5CC4]/60 bg-[#7C5CC4]/12 flex items-center justify-center clan-title text-xs text-[#A692E0]">BB</span>
+            <div>
+              <h3 class="clan-title text-sm text-[#E8E1D5]">Ambassador</h3>
+              <p class="eyebrow text-[10px] text-[#A692E0] mt-1">Bulb</p>
+            </div>
+          </header>
+          <ul class="space-y-2.5 list-none">
+            <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#7C5CC4] shrink-0" aria-hidden="true">&#10022;</span>Managed activities in the Bulb application.</li>
+            <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#7C5CC4] shrink-0" aria-hidden="true">&#10022;</span>Blogs, Twitter threads, articles, video reviews.</li>
+          </ul>
+        </article>
+
+        <article class="scroll-panel bracket panel-hover p-6">
+          <header class="flex items-center gap-4 mb-5 pb-5 border-b border-[#E8E1D5]/10">
+            <span class="w-11 h-11 shrink-0 rounded-sm border border-[#B01018]/60 bg-[#B01018]/12 flex items-center justify-center clan-title text-xs text-[#E01E28]">K2</span>
+            <div>
+              <h3 class="clan-title text-sm text-[#E8E1D5]">Ambassador</h3>
+              <p class="eyebrow text-[10px] text-[#E01E28] mt-1">K2 Powerblock</p>
+            </div>
+          </header>
+          <ul class="space-y-2.5 list-none">
+            <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#B01018] shrink-0" aria-hidden="true">&#10022;</span>Built connections and contributed to discussions.</li>
+            <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#B01018] shrink-0" aria-hidden="true">&#10022;</span>Created threads, videos, articles, tutorials.</li>
+          </ul>
+        </article>
+
+        <article class="scroll-panel bracket panel-hover p-6">
+          <header class="flex items-center gap-4 mb-5 pb-5 border-b border-[#E8E1D5]/10">
+            <span class="w-11 h-11 shrink-0 rounded-sm border border-[#7C5CC4]/60 bg-[#7C5CC4]/12 flex items-center justify-center clan-title text-xs text-[#A692E0]">SF</span>
+            <div>
+              <h3 class="clan-title text-sm text-[#E8E1D5]">Ambassador</h3>
+              <p class="eyebrow text-[10px] text-[#A692E0] mt-1">Safariq</p>
+            </div>
+          </header>
+          <ul class="space-y-2.5 list-none">
+            <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#7C5CC4] shrink-0" aria-hidden="true">&#10022;</span>Twitter threads and articles that drove engagement.</li>
+            <li class="flex gap-3 text-[13px] leading-relaxed text-[#E8E1D5]/60"><span class="text-[#7C5CC4] shrink-0" aria-hidden="true">&#10022;</span>Active in community campaigns and activities.</li>
+          </ul>
+        </article>
+      </div>
+    </details>
+  </section>
+  <section id="contact" class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="reveal scroll-panel bracket susanoo-aura relative overflow-hidden px-6 py-16 md:py-24 text-center">
+      <span class="absolute inset-0 opacity-[0.07] pointer-events-none" aria-hidden="true" style="background: radial-gradient(ellipse at center, #B01018, transparent 62%);"></span>
+
+      <div class="relative">
+        <svg width="60" height="60" viewBox="0 0 40 40" class="eye-glow mx-auto mb-7" aria-hidden="true">
+          <circle cx="20" cy="20" r="18" fill="#0B0B10" stroke="#B01018" stroke-width="1.2"/>
+          <circle cx="20" cy="20" r="13" fill="#C4131C"/>
+          <circle cx="20" cy="20" r="3.6" fill="#0B0B10"/>
+          <g class="sharingan-spin" style="transform-origin:20px 20px">
+            <path d="M20 11c2.7 0 4.2 1.6 3.8 3.4-.4 1.7-2.4 2.3-4.1 1.6-1.4-.6-1.7-2.2-.9-3.6.3-.6.7-1.1 1.2-1.4z" fill="#0B0B10"/>
+            <path d="M27.8 24.9c1.4 2.4.6 4.4-1.2 4.7-1.7.3-3-1.3-2.9-3.2.1-1.5 1.5-2.4 3-2.1.5.1.9.3 1.1.6z" fill="#0B0B10"/>
+            <path d="M12.2 24.9c-1.4 2.4-.6 4.4 1.2 4.7 1.7.3 3-1.3 2.9-3.2-.1-1.5-1.5-2.4-3-2.1-.5.1-.9.3-1.1.6z" fill="#0B0B10"/>
+          </g>
+        </svg>
+
+        <p class="eyebrow text-[#E01E28] mb-5">Let's Work</p>
+        <h2 class="clan-title text-3xl md:text-6xl leading-tight mb-6">
+          Ready To Build<br>
+          <span class="blood-text">Something Great?</span>
+        </h2>
+        <p class="text-[15px] text-[#E8E1D5]/55 max-w-md mx-auto mb-10">Want to scale your Web3 community? I'm here. Let's make it happen.</p>
+
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="mailto:mizul240704@gmail.com" class="btn-blood px-8 py-4 rounded-sm clan-title text-xs inline-flex items-center gap-3">
+            Let's Talk
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12l-7.5 7.5M21 12H3"/></svg>
+          </a>
+          <a href="https://x.com/zulmeegp" target="_blank" rel="noopener noreferrer" class="btn-ghost px-8 py-4 rounded-sm clan-title text-xs inline-flex items-center gap-3">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            @zulmeegp
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="border-t-[3px] border-[#FF6B00] py-8">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+  </main>
+  <footer class="border-t border-[#B01018]/35">
+    <div class="max-w-6xl mx-auto px-6 py-9 flex flex-col md:flex-row items-center justify-between gap-5">
       <div class="flex items-center gap-3">
-        <span class="s-badge text-lg">S</span>
-        <span class="font-comic text-xl tracking-wider text-[#FFD700]">MYZULLL</span>
-        <div class="flex gap-2">
-          <span class="w-3 h-3 bg-[#E31E24] comic-border"></span>
-          <span class="w-3 h-3 bg-[#0078CC] comic-border"></span>
-          <span class="w-3 h-3 bg-[#FFD700] comic-border"></span>
-          <span class="w-3 h-3 bg-[#FF6B00] comic-border"></span>
-        </div>
+        <svg width="22" height="22" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="18" fill="#0B0B10" stroke="#B01018" stroke-width="1.6"/>
+          <circle cx="20" cy="20" r="12.5" fill="#C4131C"/>
+          <circle cx="20" cy="20" r="3.4" fill="#0B0B10"/>
+        </svg>
+        <span class="clan-title text-sm text-[#E8E1D5]">Myzulll</span>
       </div>
-      <span class="text-xs font-bold text-white/30">&copy; 2026 Muhamad Hilmi Zulkarnaen.</span>
+      <span class="font-kanji text-xs text-[#E8E1D5]/30 tracking-[.3em]">団結は力</span>
+      <div class="flex items-center gap-5 eyebrow text-[10px] text-[#E8E1D5]/45">
+        <a href="https://x.com/zulmeegp" target="_blank" rel="noopener noreferrer" class="hover:text-[#E01E28] transition-colors" aria-label="X (@zulmeegp)">X</a>
+        <a href="https://www.linkedin.com/in/mizul-lll-0253a9348/" target="_blank" rel="noopener noreferrer" class="hover:text-[#E01E28] transition-colors" aria-label="LinkedIn">In</a>
+        <a href="https://github.com/salsabila2507" target="_blank" rel="noopener noreferrer" class="hover:text-[#E01E28] transition-colors" aria-label="GitHub">Gh</a>
+        <span class="text-[#E8E1D5]/25">&copy; 2026</span>
+      </div>
     </div>
   </footer>
+<script>
+(() => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const menuBtn = document.querySelector('[aria-controls="mobile-menu"]');
+  const menu = document.getElementById('mobile-menu');
+  if (menuBtn && menu) {
+    menuBtn.addEventListener('click', () => {
+      menuBtn.setAttribute('aria-expanded', String(menu.classList.contains('hidden') === false));
+    });
+  }
+
+  const field = document.getElementById('ashField');
+  if (field && !reduced) {
+    for (let i = 0; i < 26; i++) {
+      const e = document.createElement('span');
+      e.className = 'ash';
+      const s = 2 + Math.random() * 3;
+      e.style.width = e.style.height = s + 'px';
+      e.style.left = Math.random() * 100 + 'vw';
+      e.style.animationDuration = (11 + Math.random() * 12) + 's';
+      e.style.animationDelay = (Math.random() * 14) + 's';
+      if (Math.random() > 0.72) {
+        e.style.background = 'rgba(124,92,196,.7)';
+        e.style.boxShadow = '0 0 6px rgba(124,92,196,.85)';
+      }
+      field.appendChild(e);
+    }
+  }
+
+  if (reduced || !window.gsap) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.hero-el', {
+    opacity: 0, y: 26, duration: 0.7, ease: 'power3.out', stagger: 0.09
+  });
+
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const end = parseFloat(el.dataset.count);
+    const obj = { v: 0 };
+    gsap.to(obj, {
+      v: end, duration: 1.7, delay: 0.55, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 95%', once: true },
+      onUpdate: () => { el.textContent = Math.round(obj.v).toLocaleString('en-US'); }
+    });
+  });
+
+  gsap.utils.toArray('.reveal').forEach(el => {
+    gsap.from(el, {
+      opacity: 0, y: 30, duration: 0.65, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+    });
+  });
+})();
+</script>
+</div>
+
 </body>
 </html>
